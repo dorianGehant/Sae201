@@ -29,14 +29,24 @@ namespace Matinfo
             ApplicationData data = new ApplicationData();
         }
 
-        private void Button_Click_FormPersonnel(object sender, RoutedEventArgs e)
+     
+
+        private void btAjoutPersonnel_Click(object sender, RoutedEventArgs e)
         {
-            PersonnelForm formPersonnel = new PersonnelForm();
-            formPersonnel.Show();
+            Personnel persoCree = new Personnel();
+            PersonnelForm formperso = new PersonnelForm(persoCree, false);
+            formperso.Owner = this;
+            bool result = (bool)formperso.ShowDialog();
+            if (result)
+            {
+                applicationData.LesPersonnels.Add(persoCree);
+                applicationData.RefreshAssociationsMateriaux();
+            }
         }
 
         private void Button_Click_RemovePersonnel(object sender, RoutedEventArgs e)
         {
+            applicationData.LesPersonnels[lvPersonnel.SelectedIndex].Delete();
             applicationData.LesPersonnels.Remove((Personnel)lvPersonnel.SelectedItem);
         }
 
@@ -97,5 +107,7 @@ namespace Matinfo
         {
             lvAttribution.Items.Remove(lvAttribution.SelectedItem);
         }
+
+       
     }
 }
