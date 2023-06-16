@@ -107,7 +107,7 @@ namespace Matinfo.Metier
             }
             ///creation du personnel
             DataAccess accessDB = new DataAccess();
-            string requete = string.Format("INSERT INTO personneml(idpersonnel, nompersonnel, prenompersonnel, emailpersonnel) VALUES({0}, '{1}', '{2}', '{3}')", +this.IdPersonnel, this.Nom, this.Prenom, this.Email);
+            string requete = string.Format("INSERT INTO personnel(idpersonnel, nompersonnel, prenompersonnel, emailpersonnel) VALUES({0}, '{1}', '{2}', '{3}')", +this.IdPersonnel, this.Nom, this.Prenom, this.Email);
             accessDB.SetData(requete);
             return true;
         }
@@ -143,12 +143,36 @@ namespace Matinfo.Metier
 
         public void Read()
         {
-            throw new NotImplementedException();
+            DataAccess accesBD = new DataAccess();
+            String requete = string.Format("select idpersonnel from personnel where idpersonnel = '{0}'", this.IdPersonnel);
+            DataTable datas = accesBD.GetData(requete);
+            if (datas != null)
+            {
+                if (datas.Rows.Count > 0)
+                {
+                    this.IdPersonnel = int.Parse(datas.Rows[0]["idpersonnel"].ToString());
+                }
+            }
         }
 
         public bool Update()
         {
-            return false;
+            int idPersonnelModifie = this.IdPersonnel;
+            /// verification que les nouvelles valeurs respectent l'unicité
+            this.Read();
+            if (this.IdPersonnel != idPersonnelModifie)
+            {
+                MessageBox.Show("Erreur lors de la modification du matériel, le nouveau code barre existe déjà", "Problème lors de la modification", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else
+            {
+                this.IdPersonnel = idPersonnelModifie;
+                DataAccess accesBD = new DataAccess();
+                String requete = string.Format("update personnel SET nompersonnel = '{0}', prenompersonnel = '{1}', emailpersonnel = '{2}' WHERE idmateriel = {3}", this.IdPersonnel, this.Nom, this.Prenom, this.Email);
+                accesBD.SetData(requete);
+            }
+            return true;
         }
     }
 }
