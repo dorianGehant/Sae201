@@ -166,7 +166,19 @@ namespace Matinfo.Metier
 
         public ObservableCollection<Materiel> FindBySelection(string criteres)
         {
-            return new ObservableCollection<Materiel>();
+            ObservableCollection<Materiel> LesMateriaux = new ObservableCollection<Materiel>();
+            DataAccess accesBD = new DataAccess();
+            String requete = "select idmateriel, idcategorie, nommateriel, referenceconstructeur, codebarre from materiel" + criteres;
+            DataTable datas = accesBD.GetData(requete);
+            if (datas != null)
+            {
+                foreach (DataRow row in datas.Rows)
+                {
+                    Materiel m = new Materiel(int.Parse(row["idmateriel"].ToString()), int.Parse(row["idcategorie"].ToString()), (String)row["codebarre"], (String)row["nommateriel"], (String)row["referenceconstructeur"]);
+                    LesMateriaux.Add(m);
+                }
+            }
+            return LesMateriaux;
         }
 
         public void Read()
