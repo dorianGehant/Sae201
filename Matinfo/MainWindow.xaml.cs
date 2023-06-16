@@ -40,7 +40,7 @@ namespace Matinfo
             if (result)
             {
                 applicationData.LesPersonnels.Add(persoCree);
-                applicationData.RefreshAssociationsMateriaux();
+                applicationData.RefreshAssociationsPersonnel();
             }
         }
 
