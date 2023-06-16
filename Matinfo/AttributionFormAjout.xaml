@@ -1,0 +1,72 @@
+﻿<Window x:Class="Matinfo.AttributionFormAjout"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Matinfo"
+        mc:Ignorable="d"
+        Title="Formulaire ajout attribution"
+        Width="285"
+        Height="337"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label
+            Margin="24,27,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Nom du personnel:"
+            RenderTransformOrigin="0.553,-0.037" />
+        <TextBox
+            Width="232"
+            Margin="0,53,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            TextWrapping="Wrap" />
+        <Label
+            Margin="24,79,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Nom du matériel :"
+            RenderTransformOrigin="0.553,-0.037" />
+        <TextBox
+            Width="232"
+            Margin="0,105,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            TextWrapping="Wrap" />
+        <Label
+            Margin="24,134,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Commentaire :"
+            RenderTransformOrigin="0.553,-0.037" />
+        <TextBox
+            Width="232"
+            Margin="0,160,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            TextWrapping="Wrap" />
+        <Label
+            Margin="24,191,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Date d'attribution :"
+            RenderTransformOrigin="0.553,-0.037" />
+        <DatePicker HorizontalAlignment="Center" Margin="0,217,0,0" VerticalAlignment="Top" Width="232"/>
+        <Button
+            Width="61"
+            Height="26"
+            Margin="45,266,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Confirmer" Click="Button_Click" />
+        <Button
+            Width="53"
+            Height="27"
+            Margin="178,266,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Annuler" Click="Button_Click"/>
+
+    </Grid>
+</Window>

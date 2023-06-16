@@ -1,0 +1,29 @@
+﻿<Window x:Class="Matinfo.CategorieForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Matinfo"
+        mc:Ignorable="d"
+        Title="Formulaire categorie" Height="217" Width="181"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Content="Nom de la categorie :" HorizontalAlignment="Left" Margin="19,36,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="18" Margin="22,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
+        <Button
+            Width="63"
+            Height="28"
+            Margin="10,125,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Confirmer" Click="Button_Click" />
+        <Button
+            Width="52"
+            Height="29"
+            Margin="106,124,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Annuler" Click="Button_Click"/>
+
+    </Grid>
+</Window>

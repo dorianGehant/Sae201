@@ -1,0 +1,199 @@
+﻿<Window
+    x:Class="Matinfo.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Matinfo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:Matinfo.Metier"
+    Title="MATINFO"
+    Width="1500"
+    Height="500"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+
+    <Window.DataContext>
+        <model:ApplicationData x:Name="applicationData" />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <ListView
+            x:Name="lvPersonnel"
+            Margin="10,49,10,107"
+            ItemsSource="{Binding Path=LesPersonnels}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Email}" Header="Email" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Nom}" Header="Nom" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Prenom}" Header="Prénom" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button
+            Width="80"
+            Margin="0,369,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Click="Button_Click_FormPersonnel"
+            Content="Ajouter" />
+        <Button
+            Width="80"
+            Margin="0,402,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Click="Button_Click_FormPersonnel"
+            Content="Modifier" />
+        <Button
+            Width="80"
+            Margin="0,435,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Click="Button_Click_RemovePersonnel"
+            Content="Supprimer" />
+        <ListView
+            x:Name="lvMateriel"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="0,49,187,107"
+            ItemsSource="{Binding Path=LesMateriaux}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Nom}" Header="Nom" />
+                    <GridViewColumn DisplayMemberBinding="{Binding CodeBarre}" Header="Code Barre" />
+                    <GridViewColumn DisplayMemberBinding="{Binding ReferenceConstructeur}" Header="Reference constructeur" />
+                    <GridViewColumn DisplayMemberBinding="{Binding UneCategorie.Nom}" Header="Categorie" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button
+            Grid.Column="1"
+            Width="80"
+            Margin="228,366,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="Button_Click_FormMateriel_Ajout"
+            Content="Ajouter" />
+        <Button
+            Grid.Column="1"
+            Width="80"
+            Margin="228,397,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="Button_Click_FormMateriel_Modif"
+            Content="Modifier" />
+        <Button
+            Grid.Column="1"
+            Width="80"
+            Margin="228,430,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="Button_Click_RemoveMateriel"
+            Content="Supprimer" />
+        <ListView
+            x:Name="lvCategorie"
+            Grid.Column="2"
+            Margin="198,48,77,108">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Nom}" Header="Nom" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button
+            Grid.Column="2"
+            Width="80"
+            Margin="208,367,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="Button_Click_FormCategorie"
+            Content="Ajouter" />
+        <Button
+            Grid.Column="2"
+            Width="80"
+            Margin="208,398,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="Button_Click_FormCategorie"
+            Content="Modifier" />
+        <Button
+            Grid.Column="2"
+            Width="80"
+            Margin="208,430,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="Button_Click_RemoveCategorie"
+            Content="Supprimer" />
+        <ListView
+            x:Name="lvAttribution"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Margin="314,49,10,107">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding NomPersonnel}" Header="Personnel" />
+                    <GridViewColumn DisplayMemberBinding="{Binding NomMateriel}" Header="Materiel" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Commentaire}" Header="Commentaire" />
+                    <GridViewColumn DisplayMemberBinding="{Binding DateAttribution}" Header="Date d'attribution" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button
+            Grid.Column="3"
+            Width="80"
+            Margin="112,367,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="Button_Click_FormAjoutAttribution"
+            Content="Ajouter" />
+        <Button
+            Grid.Column="3"
+            Width="80"
+            Margin="112,398,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="Button_Click_FormModifAttribution"
+            Content="Modifier" />
+        <Button
+            Grid.Column="3"
+            Width="80"
+            Margin="112,430,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="Button_Click_RemoveAttribution"
+            Content="Supprimer" />
+        <Label
+            x:Name="lbPersonnel"
+            Margin="0,10,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Personnels" />
+        <Label
+            x:Name="lbMateriel"
+            Grid.Column="1"
+            Margin="237,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Materiaux" />
+        <Label
+            x:Name="lbCategories"
+            Grid.Column="2"
+            Margin="183,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Categories de materiel" />
+        <Label
+            x:Name="lbAttribution"
+            Grid.Column="3"
+            Margin="116,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Attributions" />
+
+    </Grid>
+</Window>
