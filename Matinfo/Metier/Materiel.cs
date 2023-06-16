@@ -127,8 +127,7 @@ namespace Matinfo.Metier
         public bool Create()
         {
             ///verification que le codebarre n'existe pas déjà
-            this.Read();
-            if (this.IdMateriel != 0)
+            if (this.Read())
             {
                 MessageBox.Show("Erreur lors de la création du matériel, le code barre existe déjà, veuillez le changer", "Problème lors de la création", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
@@ -181,7 +180,7 @@ namespace Matinfo.Metier
             return LesMateriaux;
         }
 
-        public void Read()
+        public bool Read()
         {
             DataAccess accesBD = new DataAccess();
             String requete = string.Format("select idmateriel from materiel where codebarre = '{0}'", this.CodeBarre);
@@ -191,16 +190,17 @@ namespace Matinfo.Metier
                 if(datas.Rows.Count > 0)
                 {
                     this.IdMateriel = int.Parse(datas.Rows[0]["idmateriel"].ToString());
+                    return true;
                 }
             }
+            return false;
         }
 
         public bool Update()
         {
             int idMaterielmodifie = this.IdMateriel;
             /// verification que les nouvelles valeurs respectent l'unicité
-            this.Read();
-            if(this.idMateriel != idMaterielmodifie)
+            if(this.Read())
             {
                 MessageBox.Show("Erreur lors de la modification du matériel, le nouveau code barre existe déjà", "Problème lors de la modification", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;

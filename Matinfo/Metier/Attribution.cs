@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Matinfo.Metier
 {
@@ -82,7 +83,7 @@ namespace Matinfo.Metier
             }
         }
 
-        internal Personnel UnPersonnel
+        public Personnel UnPersonnel
         {
             get
             {
@@ -95,7 +96,7 @@ namespace Matinfo.Metier
             }
         }
 
-        internal Materiel UnMateriel
+        public Materiel UnMateriel
         {
             get
             {
@@ -110,19 +111,25 @@ namespace Matinfo.Metier
 
         public bool Create()
         {
-            return false;
+            ///creation du materiel
+            DataAccess accessDB = new DataAccess();
+            string requete = string.Format("INSERT INTO attributions(idpersonnel, idmateriel, dateattribution, commentaireattribution) VALUES({0}, {1}, '{2}', '{3}')", +this.IdPersonnel, this.IdMateriel, this.DateAttribution.ToString("dd/MM/yyyy"), this.Commentaire);
+            accessDB.SetData(requete);
+            return true;
         }
 
         public void Delete()
         {
-            
+            DataAccess accessDB = new DataAccess();
+            string requete = "DELETE FROM attributions WHERE (\"idpersonnel\"=" + this.IdPersonnel + " AND \"idmateriel\"=" + this.IdMateriel + " AND \"dateattribution\"=" + this.DateAttribution + ")";
+            accessDB.SetData(requete);
         }
 
         public ObservableCollection<Attribution> FindAll()
         {
             ObservableCollection<Attribution> LesAttributions = new ObservableCollection<Attribution>();
             DataAccess accesBD = new DataAccess();
-            String requete = "select idpersonnel, idmateriel, dateattribution, commentaireattribution from attributions ;";
+            String requete = "select idpersonnel, idmateriel, dateattribution, commentaireattribution from attributions";
             DataTable datas = accesBD.GetData(requete);
             if (datas != null)
             {
@@ -137,17 +144,42 @@ namespace Matinfo.Metier
 
         public ObservableCollection<Attribution> FindBySelection(string criteres)
         {
-            return new ObservableCollection<Attribution>();
+            ObservableCollection<Attribution> LesAttributions = new ObservableCollection<Attribution>();
+            DataAccess accesBD = new DataAccess();
+            String requete = "select idpersonnel, idmateriel, dateattribution, commentaireattribution from attributions " + criteres;
+            DataTable datas = accesBD.GetData(requete);
+            if (datas != null)
+            {
+                foreach (DataRow row in datas.Rows)
+                {
+                    Attribution a = new Attribution(int.Parse(row["idpersonnel"].ToString()), int.Parse(row["idmateriel"].ToString()), (String)row["commentaireattribution"], (DateTime)row["commentaireattribution"]);
+                    LesAttributions.Add(a);
+                }
+            }
+            return LesAttributions;
         }
 
-        public void Read()
+        public bool Read()
         {
-            
+            DataAccess accesBD = new DataAccess();
+            String requete = string.Format("select * from attributions WHERE (idpersonnel = {0} AND idmateriel = {1} AND dateattribution = '{2}')", this.idPersonnel, this.IdMateriel, this.DateAttribution.ToString("dd/MM/yyyy"));
+            DataTable datas = accesBD.GetData(requete);
+            if (datas != null)
+            {
+                if (datas.Rows.Count > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool Update()
         {
-            return false;
+            DataAccess accesBD = new DataAccess();
+            String requete = string.Format("update attributions SET dateattribution = '{0}', commentaireattribution = '{1}' WHERE (idpersonnel= {2} AND idmateriel= {3} AND dateattribution= {4}", this.DateAttribution.ToString("dd/MM/yyyy"), this.Commentaire, this.IdPersonnel, this.IdMateriel, this.DateAttribution);
+            accesBD.SetData(requete);
+            return true;
         }
     }
 }

@@ -14,59 +14,62 @@
             Margin="24,27,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Nom du personnel:"
+            Content="ID du personnel:"
             RenderTransformOrigin="0.553,-0.037" />
-        <TextBox
+        <TextBox x:Name="tbIdPersonnel"
             Width="232"
             Margin="0,53,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            TextWrapping="Wrap" />
+            TextWrapping="Wrap" 
+            Text="{Binding IdPersonnel}"/>
         <Label
             Margin="24,79,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Nom du matériel :"
+            Content="ID du matériel :"
             RenderTransformOrigin="0.553,-0.037" />
-        <TextBox
+        <TextBox x:Name="tbIdMateriel"
             Width="232"
             Margin="0,105,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            TextWrapping="Wrap" />
+            TextWrapping="Wrap" 
+            Text="{Binding IdMateriel}"/>
         <Label
             Margin="24,134,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Commentaire :"
             RenderTransformOrigin="0.553,-0.037" />
-        <TextBox
+        <TextBox x:Name="tbCommentaire"
             Width="232"
             Margin="0,160,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            TextWrapping="Wrap" />
+            TextWrapping="Wrap"
+            Text="{Binding Commentaire}"/>
         <Label
             Margin="24,191,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Date d'attribution :"
             RenderTransformOrigin="0.553,-0.037" />
-        <DatePicker HorizontalAlignment="Center" Margin="0,217,0,0" VerticalAlignment="Top" Width="232"/>
+        <DatePicker x:Name="dpDate" HorizontalAlignment="Center" Margin="0,217,0,0" VerticalAlignment="Top" Width="232" SelectedDate="{Binding DateAttribution}"/>
         <Button
             Width="61"
             Height="26"
             Margin="45,266,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Confirmer" Click="Button_Click" />
+            Content="Ajouter" Click="Button_Click_Ajouter" />
         <Button
             Width="53"
             Height="27"
             Margin="178,266,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Annuler" Click="Button_Click"/>
+            Content="Annuler" Click="Button_Click_Annuler"/>
 
     </Grid>
 </Window>

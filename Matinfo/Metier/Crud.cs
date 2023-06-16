@@ -8,7 +8,7 @@ namespace Matinfo.Metier
    {
       bool Create();
       
-      void Read();
+      bool Read();
       
       bool Update();
       

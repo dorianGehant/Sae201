@@ -47,7 +47,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             
-            Content="Modifier" />
+            Content="Modifier" Click="btModifPersonnel_Click" />
         <Button
             Width="80"
             Margin="0,435,0,0"
@@ -97,7 +97,8 @@
         <ListView
             x:Name="lvCategorie"
             Grid.Column="2"
-            Margin="198,48,77,108">
+            Margin="198,48,10,108"
+            ItemsSource="{Binding Path=LesCategories}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Nom}" Header="Nom" />
@@ -107,62 +108,62 @@
         <Button
             Grid.Column="2"
             Width="80"
-            Margin="208,367,0,0"
+            Margin="246,367,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Click="Button_Click_FormCategorie"
+            Click="Button_Click_AjoutFormCategorie"
             Content="Ajouter" />
         <Button
             Grid.Column="2"
             Width="80"
-            Margin="208,398,0,0"
+            Margin="246,398,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Click="Button_Click_FormCategorie"
+            Click="Button_Click_ModifFormCategorie"
             Content="Modifier" />
         <Button
             Grid.Column="2"
             Width="80"
-            Margin="208,430,0,0"
+            Margin="246,430,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="Button_Click_RemoveCategorie"
             Content="Supprimer" />
         <ListView
             x:Name="lvAttribution"
-            Grid.Column="2"
-            Grid.ColumnSpan="2"
-            Margin="314,49,10,107">
+            Grid.Column="3"
+            Margin="10,49,10,107"
+            ItemsSource="{Binding Path=LesAttributions}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding NomPersonnel}" Header="Personnel" />
-                    <GridViewColumn DisplayMemberBinding="{Binding NomMateriel}" Header="Materiel" />
+                    <GridViewColumn DisplayMemberBinding="{Binding UnPersonnel.Nom}" Header="Personnel" />
+                    <GridViewColumn DisplayMemberBinding="{Binding UnMateriel.Nom}" Header="Materiel" />
                     <GridViewColumn DisplayMemberBinding="{Binding Commentaire}" Header="Commentaire" />
-                    <GridViewColumn DisplayMemberBinding="{Binding DateAttribution}" Header="Date d'attribution" />
+                    <GridViewColumn DisplayMemberBinding="{Binding DateAttribution, StringFormat=d}" Header="Date d'attribution" />
                 </GridView>
             </ListView.View>
         </ListView>
         <Button
             Grid.Column="3"
             Width="80"
-            Margin="112,367,0,0"
-            HorizontalAlignment="Left"
+            Margin="0,367,0,0"
+            HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Click="Button_Click_FormAjoutAttribution"
             Content="Ajouter" />
         <Button
             Grid.Column="3"
             Width="80"
-            Margin="112,398,0,0"
-            HorizontalAlignment="Left"
+            Margin="0,398,0,0"
+            HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Click="Button_Click_FormModifAttribution"
             Content="Modifier" />
         <Button
             Grid.Column="3"
             Width="80"
-            Margin="112,430,0,0"
-            HorizontalAlignment="Left"
+            Margin="0,430,0,0"
+            HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Click="Button_Click_RemoveAttribution"
             Content="Supprimer" />
@@ -182,14 +183,14 @@
         <Label
             x:Name="lbCategories"
             Grid.Column="2"
-            Margin="183,10,0,0"
+            Margin="217,10,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Categories de materiel" />
         <Label
             x:Name="lbAttribution"
             Grid.Column="3"
-            Margin="116,10,0,0"
+            Margin="155,10,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Attributions" />

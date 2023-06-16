@@ -33,6 +33,7 @@ namespace Matinfo.Metier
 
             /// Mise en place des associations ///
             RefreshAssociationsMateriaux();
+            RefreshAssociationsPersonnel();
         }
 
         public ObservableCollection<Materiel> LesMateriaux
@@ -94,15 +95,27 @@ namespace Matinfo.Metier
             foreach (Materiel unMateriel in LesMateriaux.ToList())
             {
                 unMateriel.LesAttributions = new ObservableCollection<Attribution>(
-                LesAttributions.ToList().FindAll(e => e.IdMateriel == unMateriel.IdMateriel));
-                
+                LesAttributions.ToList().FindAll(e => e.IdMateriel == unMateriel.IdMateriel)); 
             }
             
-
             /// Categorie de chaque matériel ///
             foreach (Materiel unMateriel in lesMateriaux.ToList())
             {
                 unMateriel.UneCategorie = LesCategories.ToList().Find(g => g.IdCategorie == unMateriel.IdCategorie);
+            }
+
+            /// materiel de chaque attribution ///
+            foreach(Attribution uneAttribution in LesAttributions.ToList())
+            {
+                uneAttribution.UnMateriel = LesMateriaux.ToList().Find(g => g.IdMateriel == uneAttribution.IdMateriel);
+            }
+
+
+            /// liste des matériaux pour chaque categorie ///
+            foreach (CategorieMateriel categorie in LesCategories.ToList())
+            {
+                categorie.LesMateriaux = new ObservableCollection<Materiel>(
+                LesMateriaux.ToList().FindAll(e => e.IdCategorie == categorie.IdCategorie));
             }
         }
         public void RefreshAssociationsPersonnel()
@@ -112,6 +125,12 @@ namespace Matinfo.Metier
             {
                 unPerso.LesAttributions = new ObservableCollection<Attribution>(
                 LesAttributions.ToList().FindAll(e => e.IdPersonnel == unPerso.IdPersonnel));
+            }
+
+            /// personnel de chaque attribution ///
+            foreach (Attribution uneAttribution in LesAttributions.ToList())
+            {
+                uneAttribution.UnPersonnel = LesPersonnels.ToList().Find(g => g.IdPersonnel == uneAttribution.IdPersonnel);
             }
         }
     }

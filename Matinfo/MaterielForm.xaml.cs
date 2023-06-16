@@ -27,6 +27,7 @@ namespace Matinfo
             InitializeComponent();
             this.DataContext = materiel;
             this.materiel = materiel;
+            this.materiel.IdCategorie = 1;
             if (estFormModification)
             {
                 this.Title = "Formulaire modification materiel";
