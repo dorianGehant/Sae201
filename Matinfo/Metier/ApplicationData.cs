@@ -95,12 +95,23 @@ namespace Matinfo.Metier
             {
                 unMateriel.LesAttributions = new ObservableCollection<Attribution>(
                 LesAttributions.ToList().FindAll(e => e.IdMateriel == unMateriel.IdMateriel));
+                
             }
+            
 
             /// Categorie de chaque matériel ///
             foreach (Materiel unMateriel in lesMateriaux.ToList())
             {
                 unMateriel.UneCategorie = LesCategories.ToList().Find(g => g.IdCategorie == unMateriel.IdCategorie);
+            }
+        }
+        public void RefreshAssociationsPersonnel()
+        {
+            /// Liste des attributions pour chaque personnels ///
+            foreach (Personnel unPerso in LesPersonnels.ToList())
+            {
+                unPerso.LesAttributions = new ObservableCollection<Attribution>(
+                LesAttributions.ToList().FindAll(e => e.IdPersonnel == unPerso.IdPersonnel));
             }
         }
     }

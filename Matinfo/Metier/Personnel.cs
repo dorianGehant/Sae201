@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Matinfo.Metier
 {
@@ -14,6 +15,8 @@ namespace Matinfo.Metier
         private string email;
         private string nom;
         private string prenom;
+        private ObservableCollection<Attribution> lesAttributions;
+
 
         public Personnel()
         {
@@ -80,14 +83,40 @@ namespace Matinfo.Metier
             }
         }
 
+        public ObservableCollection<Attribution> LesAttributions
+        {
+            get
+            {
+                return this.lesAttributions;
+            }
+
+            set
+            {
+                this.lesAttributions = value;
+            }
+        }
+
         public bool Create()
         {
-            return false;
+            ///verification que le personnel n'existe pas déjà
+            this.Read();
+            if (this.IdPersonnel != 0)
+            {
+                MessageBox.Show("Erreur lors de la création du personnel, la personne existe déjà, veuillez le changer", "Problème lors de la création", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            ///creation du personnel
+            DataAccess accessDB = new DataAccess();
+            string requete = string.Format("INSERT INTO personneml(idpersonnel, nompersonnel, prenompersonnel, emailpersonnel) VALUES({0}, '{1}', '{2}', '{3}')", +this.IdPersonnel, this.Nom, this.Prenom, this.Email);
+            accessDB.SetData(requete);
+            return true;
         }
 
         public void Delete()
         {
-            throw new NotImplementedException();
+            DataAccess accessDB = new DataAccess();
+            string requete = "DELETE FROM personnel WHERE \"idpersonnel\"=" + this.IdPersonnel;
+            accessDB.SetData(requete);
         }
 
         public ObservableCollection<Personnel> FindAll()

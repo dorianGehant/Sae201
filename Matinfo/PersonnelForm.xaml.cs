@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Matinfo.Metier;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace Matinfo
     /// </summary>
     public partial class PersonnelForm : Window
     {
-        public PersonnelForm()
+        public PersonnelForm(Personnel personnel, bool estFormModification)
         {
             InitializeComponent();
         }

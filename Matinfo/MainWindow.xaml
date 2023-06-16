@@ -35,19 +35,18 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button
+        <Button x:Name="btAjoutPersonnel"
             Width="80"
             Margin="0,369,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            Click="Button_Click_FormPersonnel"
-            Content="Ajouter" />
+            Content="Ajouter" Click="btAjoutPersonnel_Click" />
         <Button
             Width="80"
             Margin="0,402,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            Click="Button_Click_FormPersonnel"
+            
             Content="Modifier" />
         <Button
             Width="80"
