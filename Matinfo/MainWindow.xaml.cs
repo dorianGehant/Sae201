@@ -66,8 +66,12 @@ namespace Matinfo
 
         private void Button_Click_RemoveMateriel(object sender, RoutedEventArgs e)
         {
-            applicationData.LesMateriaux[lvMateriel.SelectedIndex].Delete();
-            applicationData.LesMateriaux.Remove((Materiel)lvMateriel.SelectedItem);
+            MessageBoxResult resultat = MessageBox.Show("Etes vous sûr de vouloir supprimer ce materiel ? Cela supprimera aussi ses " + ((Materiel)this.lvMateriel.SelectedItem).LesAttributions.Count + " Attributions !", "Confirmer la suppression?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (resultat == MessageBoxResult.Yes)
+            {
+                applicationData.LesMateriaux[lvMateriel.SelectedIndex].Delete();
+                applicationData.LesMateriaux.Remove((Materiel)lvMateriel.SelectedItem);
+            }
         }
 
         private void Button_Click_FormCategorie(object sender, RoutedEventArgs e)
