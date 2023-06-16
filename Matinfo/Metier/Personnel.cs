@@ -107,7 +107,7 @@ namespace Matinfo.Metier
             }
             ///creation du personnel
             DataAccess accessDB = new DataAccess();
-            string requete = string.Format("INSERT INTO personnel(idpersonnel, nompersonnel, prenompersonnel, emailpersonnel) VALUES({0}, '{1}', '{2}', '{3}')", +this.IdPersonnel, this.Nom, this.Prenom, this.Email);
+            string requete = string.Format("INSERT INTO personnel(nompersonnel, prenompersonnel, emailpersonnel) VALUES('{0}', '{1}', '{2}')", this.Nom, this.Prenom, this.Email);
             accessDB.SetData(requete);
             return true;
         }
