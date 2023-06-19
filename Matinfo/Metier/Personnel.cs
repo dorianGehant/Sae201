@@ -36,7 +36,7 @@ namespace Matinfo.Metier
             this.Prenom = prenom;
         }
         /// <summary>
-        /// Obtient ou définit l'email
+        /// Obtient ou definit l'email
         /// </summary>
         public string Email
         {
@@ -51,7 +51,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient ou définit le nom
+        /// Obtient ou definit le nom
         /// </summary>
         public string Nom
         {
@@ -66,7 +66,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient ou définit le prénom
+        /// Obtient ou definit le prenom
         /// </summary>
         public string Prenom
         {
@@ -81,7 +81,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient ou définit l'idpersonnel
+        /// Obtient ou definit l'idpersonnel
         /// </summary>
         public int IdPersonnel
         {
@@ -96,7 +96,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient la base de données des atttributions
+        /// Obtient la base de donnees des atttributions
         /// </summary>
         public ObservableCollection<Attribution> LesAttributions
         {
@@ -115,13 +115,13 @@ namespace Matinfo.Metier
         /// <summary>
         ///Creation d'un personnel
         /// </summary>
-        /// <returns>Un vrai si la création à bien marché ou un faux si cela n'a pas marché</returns>
+        /// <returns>Un vrai si la creation à bien marche ou un faux si cela n'a pas marche</returns>
         public bool Create()
         {
-            ///verification que le personnel n'existe pas déjà
+            ///verification que le personnel n'existe pas dejà
             if (this.Read())
             {
-                MessageBox.Show("Erreur lors de la création du personnel, l'email existe déjà, veuillez le changer", "Problème lors de la création", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Erreur lors de la creation du personnel, l'email existe dejà, veuillez le changer", "Problème lors de la creation", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             ///creation du personnel
@@ -131,7 +131,7 @@ namespace Matinfo.Metier
             return true;
         }
         /// <summary>
-        ///Suppréssion d'un personnel
+        ///Suppression d'un personnel
         /// </summary>
         public void Delete()
         {
@@ -140,7 +140,7 @@ namespace Matinfo.Metier
             accessDB.SetData(requete);
         }
         /// <summary>
-        ///Cherche tous les personnels dans la base de données
+        ///Cherche tous les personnels dans la base de donnees
         /// </summary>
         /// <returns>Tous les personnels</returns>
         public ObservableCollection<Personnel> FindAll()
@@ -160,9 +160,9 @@ namespace Matinfo.Metier
             return LesPersonnels;
         }
         /// <summary>
-        ///Cherche le personnel selectionné dans la base de données
+        ///Cherche le personnel selectionne dans la base de donnees
         /// </summary>
-        /// <returns>Tous les personnels selectionnées</returns>
+        /// <returns>Tous les personnels selectionnees</returns>
         public ObservableCollection<Personnel> FindBySelection(string criteres)
         {
             ObservableCollection<Personnel> LesPersonnels = new ObservableCollection<Personnel>();
@@ -180,7 +180,7 @@ namespace Matinfo.Metier
             return LesPersonnels;
         }
         /// <summary>
-        ///Cherche si il n'existe pas déjà un personnel existant avec l'émail
+        ///Cherche si il n'existe pas dejà un personnel existant avec l'email
         /// </summary>
         /// <returns>Vrai s'il existe ou faux s'il n'existe pas</returns>
         public bool Read()
@@ -209,10 +209,10 @@ namespace Matinfo.Metier
         public bool Update()
         {
             int idPersonnelModifie = this.IdPersonnel;
-            /// verification que les nouvelles valeurs respectent l'unicité
+            /// verification que les nouvelles valeurs respectent l'unicite
             if(this.Read())
             {
-                MessageBox.Show("Erreur lors de la modification du personnel, le nouvel email existe déjà", "Problème lors de la modification", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Erreur lors de la modification du personnel, le nouvel email existe dejà", "Problème lors de la modification", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             else

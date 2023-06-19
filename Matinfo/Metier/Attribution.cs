@@ -38,7 +38,7 @@ namespace Matinfo.Metier
             this.idMateriel = idMateriel;
         }
         /// <summary>
-        /// Obtient ou définit le commentaire de l'attribution 
+        /// Obtient ou definit le commentaire de l'attribution 
         /// </summary>
         public string Commentaire
         {
@@ -55,7 +55,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient ou définit la date de l'attribution 
+        /// Obtient ou definit la date de l'attribution 
         /// </summary>
         public DateTime DateAttribution
         {
@@ -71,7 +71,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient ou définit l'ID du personnel
+        /// Obtient ou definit l'ID du personnel
         /// </summary>
         public int IdPersonnel
         {
@@ -87,7 +87,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient ou définit l'ID du materiel
+        /// Obtient ou definit l'ID du materiel
         /// </summary>
         public int IdMateriel
         {
@@ -137,7 +137,7 @@ namespace Matinfo.Metier
         /// <summary>
         ///Creation de l'attribution
         /// </summary>
-        /// <returns>Un vrai si la création à bien marché</returns>
+        /// <returns>Un vrai si la creation à bien marche</returns>
         public bool Create()
         {
          
@@ -148,7 +148,7 @@ namespace Matinfo.Metier
             return true;
         }
         /// <summary>
-        ///Suppréssion de l'attribution
+        ///Suppression de l'attribution
         /// </summary>
         public void Delete()
         {
@@ -157,7 +157,7 @@ namespace Matinfo.Metier
             accessDB.SetData(requete);
         }
         /// <summary>
-        ///Cherche tous les attributions dans la base de données
+        ///Cherche tous les attributions dans la base de donnees
         /// </summary>
         /// <returns>Toutes les attributions</returns>
         public ObservableCollection<Attribution> FindAll()
@@ -178,9 +178,9 @@ namespace Matinfo.Metier
             return LesAttributions;
         }
         /// <summary>
-        ///Cherche l'attributions selectionné dans la base de données
+        ///Cherche l'attributions selectionne dans la base de donnees
         /// </summary>
-        /// <returns>Toutes les attributions selectionnées</returns>
+        /// <returns>Toutes les attributions selectionnees</returns>
         public ObservableCollection<Attribution> FindBySelection(string criteres)
         {
             
@@ -199,7 +199,7 @@ namespace Matinfo.Metier
             return LesAttributions;
         }
         /// <summary>
-        ///Cherche si il n'existe pas déjà une attribiton existante avec un materiel ou un personnel
+        ///Cherche si il n'existe pas dejà une attribiton existante avec un materiel ou un personnel
         /// </summary>
         /// <returns>Vrai s'il existe ou faux s'il n'existe pas</returns>
         public bool Read()

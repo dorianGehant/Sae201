@@ -30,21 +30,21 @@ namespace Matinfo
             this.DataContext = attribution;
         }
         /// <summary>
-        /// Teste la vérification et la valide ou non
+        /// Teste la verification et la valide ou non
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        /// <returns>Faux si il y a déjà existence</returns>
+        /// <returns>Faux si il y a dejà existence</returns>
         private void Button_Click_Ajouter(object sender, RoutedEventArgs e)
         {
             Attribution attributionActuelle = new Attribution(attribution.IdMateriel, attribution.IdMateriel, tbCommentaire.Text, (DateTime)dpDate.SelectedDate);
             
             if(attributionActuelle.DateAttribution != this.attribution.DateAttribution)
             {
-                /// test si il existe déjà une même attribution
+                /// test si il existe dejà une même attribution
                 if (attributionActuelle.Read())
                 {
-                    MessageBox.Show("Erreur lors de la modification de l'attribution : il existe déjà une attribution entre le materiel et le personnel à la date donnée", "Problème lors de la modification", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Erreur lors de la modification de l'attribution : il existe dejà une attribution entre le materiel et le personnel à la date donnee", "Problème lors de la modification", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }

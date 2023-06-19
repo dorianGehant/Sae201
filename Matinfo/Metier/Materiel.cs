@@ -11,8 +11,8 @@ namespace Matinfo.Metier
 {
     /// <summary>
     /// Stocke 6 informations :
-    /// 3 chaine : le nom, le codebarre, la réference constructeur
-    /// 2 entier : l'id de la catégorie et l'id du matériel
+    /// 3 chaine : le nom, le codebarre, la reference constructeur
+    /// 2 entier : l'id de la categorie et l'id du materiel
     /// </summary>
     public class Materiel : Crud<Materiel>
     {
@@ -39,7 +39,7 @@ namespace Matinfo.Metier
             this.ReferenceConstructeur = referenceConstructeur;
         }
         /// <summary>
-        /// Obtient ou définit le code barre
+        /// Obtient ou definit le code barre
         /// </summary>
         public string CodeBarre
         {
@@ -55,7 +55,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient ou définit le nom
+        /// Obtient ou definit le nom
         /// </summary>
         public string Nom
         {
@@ -71,7 +71,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient ou définit la référence constructeur
+        /// Obtient ou definit la reference constructeur
         /// </summary>
         public string ReferenceConstructeur
         {
@@ -87,7 +87,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient ou définit l'id du matériel
+        /// Obtient ou definit l'id du materiel
         /// </summary>
         public int IdMateriel
         {
@@ -103,7 +103,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient ou définit l'id de la catégorie
+        /// Obtient ou definit l'id de la categorie
         /// </summary>
         public int IdCategorie
         {
@@ -120,7 +120,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient ou définit la catégorie du matériel
+        /// Obtient ou definit la categorie du materiel
         /// </summary>
         public CategorieMateriel UneCategorie
         {
@@ -137,7 +137,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient la base de données des atttributions
+        /// Obtient la base de donnees des atttributions
         /// </summary>
         public ObservableCollection<Attribution> LesAttributions
         {
@@ -153,19 +153,19 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        ///Creation de la catégorie du matériel
+        ///Creation de la categorie du materiel
         /// </summary>
-        /// <returns>Un vrai si la création à bien marché ou un faux si cela n'a pas marché</returns>
+        /// <returns>Un vrai si la creation à bien marche ou un faux si cela n'a pas marche</returns>
         public bool Create()
         {
 
 
 
 
-            ///verification que le codebarre n'existe pas déjà
+            ///verification que le codebarre n'existe pas dejà
             if (this.Read())
             {
-                MessageBox.Show("Erreur lors de la création du matériel, le code barre existe déjà, veuillez le changer", "Problème lors de la création", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Erreur lors de la creation du materiel, le code barre existe dejà, veuillez le changer", "Problème lors de la creation", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             ///creation du materiel
@@ -175,7 +175,7 @@ namespace Matinfo.Metier
             return true;
         }
         /// <summary>
-        ///Suppréssion d'un matériel
+        ///Suppression d'un materiel
         /// </summary>
         public void Delete()
         {
@@ -184,9 +184,9 @@ namespace Matinfo.Metier
             accessDB.SetData(requete);
         }
         /// <summary>
-        ///Cherche tous les matériaux dans la base de données
+        ///Cherche tous les materiaux dans la base de donnees
         /// </summary>
-        /// <returns>Tous les matériaux</returns>
+        /// <returns>Tous les materiaux</returns>
         public ObservableCollection<Materiel> FindAll()
         {
             ObservableCollection<Materiel> LesMateriaux = new ObservableCollection<Materiel>();
@@ -204,9 +204,9 @@ namespace Matinfo.Metier
             return LesMateriaux;
         }
         /// <summary>
-        ///Cherche le matériel selectionné dans la base de données
+        ///Cherche le materiel selectionne dans la base de donnees
         /// </summary>
-        /// <returns>Tous les matériaux selectionnées</returns>
+        /// <returns>Tous les materiaux selectionnees</returns>
         public ObservableCollection<Materiel> FindBySelection(string criteres)
         {
             ObservableCollection<Materiel> LesMateriaux = new ObservableCollection<Materiel>();
@@ -224,7 +224,7 @@ namespace Matinfo.Metier
             return LesMateriaux;
         }
         /// <summary>
-        ///Cherche si il n'existe pas déjà un matériel existant avec le code barre
+        ///Cherche si il n'existe pas dejà un materiel existant avec le code barre
         /// </summary>
         /// <returns>Vrai s'il existe ou faux s'il n'existe pas</returns>
         public bool Read()
@@ -253,10 +253,10 @@ namespace Matinfo.Metier
         public bool Update()
         {
             int idMaterielmodifie = this.IdMateriel;
-            /// verification que les nouvelles valeurs respectent l'unicité
+            /// verification que les nouvelles valeurs respectent l'unicite
             if(this.Read())
             {
-                MessageBox.Show("Erreur lors de la modification du matériel, le nouveau code barre existe déjà", "Problème lors de la modification", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Erreur lors de la modification du materiel, le nouveau code barre existe dejà", "Problème lors de la modification", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             else

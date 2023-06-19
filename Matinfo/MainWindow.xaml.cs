@@ -90,7 +90,7 @@ namespace Matinfo
             }
         }
         /// <summary>
-        /// Créer un matériel
+        /// Creer un materiel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -123,7 +123,7 @@ namespace Matinfo
             }
         }
         /// <summary>
-        /// Supprime un matériel
+        /// Supprime un materiel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -151,7 +151,7 @@ namespace Matinfo
         }
 
         /// <summary>
-        /// Ajout une catégorie de matériel
+        /// Ajout une categorie de materiel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -168,7 +168,7 @@ namespace Matinfo
             }
         }
         /// <summary>
-        /// Modifie une catégorie de matériel
+        /// Modifie une categorie de materiel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -185,7 +185,7 @@ namespace Matinfo
         }
 
         /// <summary>
-        /// Supprime une catégorie de matériel
+        /// Supprime une categorie de materiel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -196,7 +196,7 @@ namespace Matinfo
             /// si la categorie a des materiaux alors on demande confirmation pour la suppression
             if (nbMateriauxLies > 0)
             {
-                resultat = MessageBox.Show("Etes vous sûr de vouloir supprimer ce materiel ? Cela supprimera aussi ses " + nbMateriauxLies + " materiaux ainsi que les attributions qui y sont liées !", "Confirmer la suppression?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                resultat = MessageBox.Show("Etes vous sûr de vouloir supprimer ce materiel ? Cela supprimera aussi ses " + nbMateriauxLies + " materiaux ainsi que les attributions qui y sont liees !", "Confirmer la suppression?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             }
 
             if (resultat == MessageBoxResult.Yes)
@@ -261,7 +261,7 @@ namespace Matinfo
             applicationData.LesAttributions.Remove((Attribution)lvAttribution.SelectedItem);
         }
         /// <summary>
-        /// Affiche les attributions lié au matériel selectionné
+        /// Affiche les attributions lie au materiel selectionne
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -279,7 +279,7 @@ namespace Matinfo
             }
         }
         /// <summary>
-        /// Re-affiche en déselectionnant le matériel
+        /// Re-affiche en deselectionnant le materiel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -288,7 +288,7 @@ namespace Matinfo
             lvMateriel.SelectedItem = null;
         }
         /// <summary>
-        /// Affiche les matériaux de la catégorie
+        /// Affiche les materiaux de la categorie
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -307,7 +307,7 @@ namespace Matinfo
             }
         }
         /// <summary>
-        /// Déselectionne la catégorie qui remet la liste de matériaux
+        /// Deselectionne la categorie qui remet la liste de materiaux
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

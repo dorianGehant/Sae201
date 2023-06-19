@@ -40,7 +40,7 @@ namespace Matinfo
             }
         }
         /// <summary>
-        /// Ajout un matériel avec le formulaire
+        /// Ajout un materiel avec le formulaire
         /// </summary>
         /// <returns>S'il y a une erreur</returns>
         /// <param name="sender"></param>
@@ -68,7 +68,7 @@ namespace Matinfo
         }
 
         /// <summary>
-        /// Modifie un matériel avec le formulaire
+        /// Modifie un materiel avec le formulaire
         /// </summary>
         /// <retunrs>S'il y a une erreur</retunrs>
         /// <param name="sender"></param>

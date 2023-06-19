@@ -9,7 +9,7 @@ using System.Windows.Controls;
 namespace Matinfo
 {
     /// <summary>
-    /// Vérification de l'email
+    /// Verification de l'email
     /// </summary>
     public class VerifEmailPersonnel : ValidationRule
     {
@@ -18,11 +18,11 @@ namespace Matinfo
 
         }
         /// <summary>
-        /// Vérification du format de l' email
+        /// Verification du format de l' email
         /// </summary>
         /// <param name="value"></param>
         /// <param name="cultureInfo"></param>
-        /// <returns>La validité du résultat</returns>
+        /// <returns>La validite du resultat</returns>
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             string email;

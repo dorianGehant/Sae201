@@ -9,7 +9,7 @@ using System.Windows.Controls;
 namespace Matinfo
 {
     /// <summary>
-    /// Vérification code barre
+    /// Verification code barre
     /// </summary>
     public class VerifCodeBarre : ValidationRule
     {
@@ -18,11 +18,11 @@ namespace Matinfo
 
         }
         /// <summary>
-        /// Vérification du format du Code barre
+        /// Verification du format du Code barre
         /// </summary>
         /// <param name="value"></param>
         /// <param name="cultureInfo"></param>
-        /// <returns>La validité du résultat</returns>
+        /// <returns>La validite du resultat</returns>
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
@@ -45,7 +45,7 @@ namespace Matinfo
                 {
                     return ValidationResult.ValidResult;
                 }
-                return new ValidationResult(false, "code barre est alphanumérique");
+                return new ValidationResult(false, "code barre est alphanumerique");
             }
         }
     }

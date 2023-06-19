@@ -12,7 +12,7 @@ namespace Matinfo.Metier
     /// <summary>
     /// Stocke 2 informations :
     /// 1 chaine : le nom
-    /// 1 entier : l'id de la catégorie
+    /// 1 entier : l'id de la categorie
     /// </summary>
     public class CategorieMateriel : Crud<CategorieMateriel>
     {
@@ -33,7 +33,7 @@ namespace Matinfo.Metier
             this.Nom = nom;
         }
         /// <summary>
-        /// Obtient ou définit le nom de la categorie 
+        /// Obtient ou definit le nom de la categorie 
         /// </summary>
         public string Nom
         {
@@ -49,7 +49,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient ou définit l'id de la categorie 
+        /// Obtient ou definit l'id de la categorie 
         /// </summary>
         public int IdCategorie
         {
@@ -65,7 +65,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient la base de données des matériaux
+        /// Obtient la base de donnees des materiaux
         /// </summary>
         public ObservableCollection<Materiel> LesMateriaux
         {
@@ -82,26 +82,26 @@ namespace Matinfo.Metier
         }
 
         /// <summary>
-        ///Creation de la catégorie du matériel
+        ///Creation de la categorie du materiel
         /// </summary>
-        /// <returns>Un vrai si la création à bien marché ou un faux si cela n'a pas marché</returns>
+        /// <returns>Un vrai si la creation à bien marche ou un faux si cela n'a pas marche</returns>
         public bool Create()
         {
        
          
             if (this.Read())
             {
-                MessageBox.Show("Erreur lors de la création de la catégorie, il existe déjà une catégorie avec ce nom", "Problème lors de la création", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Erreur lors de la creation de la categorie, il existe dejà une categorie avec ce nom", "Problème lors de la creation", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            ///creation de la catégorie du matériel
+            ///creation de la categorie du materiel
             DataAccess accessDB = new DataAccess();
             string requete = string.Format("INSERT INTO categorie_materiel(nomcategorie) VALUES('{0}')", this.Nom);
             accessDB.SetData(requete);
             return true;
         }
         /// <summary>
-        ///Suppréssion de la catégorie du matériel
+        ///Suppression de la categorie du materiel
         /// </summary>
         public void Delete()
         {
@@ -113,9 +113,9 @@ namespace Matinfo.Metier
             accessDB.SetData(requete);
         }
         /// <summary>
-        ///Cherche toutes les catégories de matériaux dans la base de données
+        ///Cherche toutes les categories de materiaux dans la base de donnees
         /// </summary>
-        /// <returns>Toutes les catégories de matériaux</returns>
+        /// <returns>Toutes les categories de materiaux</returns>
         public ObservableCollection<CategorieMateriel> FindAll()
         {
            
@@ -136,9 +136,9 @@ namespace Matinfo.Metier
         }
 
         /// <summary>
-        ///Cherche la catégorie de matériel selectionné dans la base de données
+        ///Cherche la categorie de materiel selectionne dans la base de donnees
         /// </summary>
-        ///<returns>Toutes les catégories de matériaux< selectionnées</returns>
+        ///<returns>Toutes les categories de materiaux< selectionnees</returns>
         public ObservableCollection<CategorieMateriel> FindBySelection(string criteres)
         {
             ObservableCollection<CategorieMateriel> LesCategories = new ObservableCollection<CategorieMateriel>();
@@ -156,7 +156,7 @@ namespace Matinfo.Metier
             return LesCategories;
         }
         /// <summary>
-        ///Cherche si il n'existe pas déjà une catégorie de matériel existante avec le nom de la catégorie
+        ///Cherche si il n'existe pas dejà une categorie de materiel existante avec le nom de la categorie
         /// </summary>
         ///<returns>Vrai s'il existe ou faux s'il n'existe pas</returns>
         public bool Read()
@@ -180,17 +180,17 @@ namespace Matinfo.Metier
             return false;
         }
         /// <summary>
-        ///Modifie une catégorie de matériel existante
+        ///Modifie une categorie de materiel existante
         /// </summary>
-        ///<returns>Vrai s'il y a bien eu modification ou faux si cela n'a pas été modifié</returns>
+        ///<returns>Vrai s'il y a bien eu modification ou faux si cela n'a pas ete modifie</returns>
         public bool Update()
         {
            
             int idCategorieModifie = this.IdCategorie;
-            /// verification que les nouvelles valeurs respectent l'unicité
+            /// verification que les nouvelles valeurs respectent l'unicite
             if (this.Read())
             {
-                MessageBox.Show("Erreur lors de la modification de la categorie, le nouveau nom existe déjà", "Problème lors de la modification", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Erreur lors de la modification de la categorie, le nouveau nom existe dejà", "Problème lors de la modification", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             else

@@ -41,7 +41,7 @@ namespace Matinfo.Metier
             RefreshAssociationsPersonnel();
         }
         /// <summary>
-        /// Obtient ou définit les materiaux
+        /// Obtient ou definit les materiaux
         /// </summary>
         public ObservableCollection<Materiel> LesMateriaux
         {
@@ -57,7 +57,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient ou définit les personnels
+        /// Obtient ou definit les personnels
         /// </summary>
         public ObservableCollection<Personnel> LesPersonnels
         {
@@ -73,7 +73,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient ou définit les catégories
+        /// Obtient ou definit les categories
         /// </summary>
         public ObservableCollection<CategorieMateriel> LesCategories
         {
@@ -89,7 +89,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Obtient ou définit les attributions
+        /// Obtient ou definit les attributions
         /// </summary>
         public ObservableCollection<Attribution> LesAttributions
         {
@@ -119,7 +119,7 @@ namespace Matinfo.Metier
                 LesAttributions.ToList().FindAll(e => e.IdMateriel == unMateriel.IdMateriel)); 
             }
             
-            /// Categorie de chaque matériel ///
+            /// Categorie de chaque materiel ///
             foreach (Materiel unMateriel in lesMateriaux.ToList())
             {
                 unMateriel.UneCategorie = LesCategories.ToList().Find(g => g.IdCategorie == unMateriel.IdCategorie);
@@ -132,7 +132,7 @@ namespace Matinfo.Metier
             }
 
 
-            /// liste des matériaux pour chaque categorie ///
+            /// liste des materiaux pour chaque categorie ///
             foreach (CategorieMateriel categorie in LesCategories.ToList())
             {
                 categorie.LesMateriaux = new ObservableCollection<Materiel>(

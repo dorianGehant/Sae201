@@ -7,7 +7,7 @@ using Npgsql;
 namespace Matinfo.Metier
 {
     /// <summary>
-    /// Gestion de la connexion de la base de données
+    /// Gestion de la connexion de la base de donnees
     /// </summary>
 
     public class DataAccess
@@ -22,9 +22,9 @@ namespace Matinfo.Metier
          ;
       }
         /// <summary>
-        /// Connexion à la base de données
+        /// Connexion à la base de donnees
         /// </summary>
-        /// <returns> Retourne un booléen indiquant si la connexion est ouverte ou fermée</returns>
+        /// <returns> Retourne un booleen indiquant si la connexion est ouverte ou fermee</returns>
 
         public bool OpenConnection()
       {
@@ -46,7 +46,7 @@ namespace Matinfo.Metier
           }
       }
         /// <summary>
-        /// Déconnexion de la base de données
+        /// Deconnexion de la base de donnees
         /// </summary>
 
         private void CloseConnection()
@@ -60,10 +60,10 @@ namespace Matinfo.Metier
       }
 
         /// <summary>
-        /// Accès à des données en lecture
+        /// Accès à des donnees en lecture
         /// </summary>
-        /// <returns>Retourne un DataTable contenant les lignes renvoyées par le SELECT</returns>
-        /// <param name="getQuery">Requête SELECT de sélection de données</param>
+        /// <returns>Retourne un DataTable contenant les lignes renvoyees par le SELECT</returns>
+        /// <param name="getQuery">Requête SELECT de selection de donnees</param>
         public DataTable GetData(string getQuery)
       {
 
@@ -99,10 +99,10 @@ namespace Matinfo.Metier
       }
 
         /// <summary>
-        /// Permet d'insérer, supprimer ou modifier des données
+        /// Permet d'inserer, supprimer ou modifier des donnees
         /// </summary>
-        /// <returns>Retourne un entier contenant le nombre de lignes ajoutées/supprimées/modifiées</returns>
-        /// <param name="setQuery">Requête SQL permettant d'insérer (INSERT), supprimer (DELETE) ou modifier des données (UPDATE)</param>
+        /// <returns>Retourne un entier contenant le nombre de lignes ajoutees/supprimees/modifiees</returns>
+        /// <param name="setQuery">Requête SQL permettant d'inserer (INSERT), supprimer (DELETE) ou modifier des donnees (UPDATE)</param>
         public int SetData(string setQuery)
       {
             
