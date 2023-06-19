@@ -115,7 +115,7 @@ namespace Matinfo.Metier
         /// <summary>
         ///Creation d'un personnel
         /// </summary>
-        /// <returns>Un vrai si la création à bien marché ou un faux si cela n'a pas marché</returns
+        /// <returns>Un vrai si la création à bien marché ou un faux si cela n'a pas marché</returns>
         public bool Create()
         {
             ///verification que le personnel n'existe pas déjà
@@ -142,7 +142,7 @@ namespace Matinfo.Metier
         /// <summary>
         ///Cherche tous les personnels dans la base de données
         /// </summary>
-        /// <returns>Toutes les personnels</returns>
+        /// <returns>Tous les personnels</returns>
         public ObservableCollection<Personnel> FindAll()
         {
             ObservableCollection<Personnel> LesPersonnels = new ObservableCollection<Personnel>();
@@ -162,7 +162,7 @@ namespace Matinfo.Metier
         /// <summary>
         ///Cherche le personnel selectionné dans la base de données
         /// </summary>
-        /// <returns>Toutes les personnels selectionnées</returns>
+        /// <returns>Tous les personnels selectionnées</returns>
         public ObservableCollection<Personnel> FindBySelection(string criteres)
         {
             ObservableCollection<Personnel> LesPersonnels = new ObservableCollection<Personnel>();

@@ -9,13 +9,14 @@ using System.Windows;
 
 namespace Matinfo.Metier
 {
+    /// <summary>
+    /// Stocke 6 informations :
+    /// 3 chaine : le nom, le codebarre, la réference constructeur
+    /// 2 entier : l'id de la catégorie et l'id du matériel
+    /// </summary>
     public class Materiel : Crud<Materiel>
     {
-        /// <summary>
-        /// Stocke 6 informations :
-        /// 3 chaine : le nom, le codebarre, la réference constructeur
-        /// 2 entier : l'id de la catégorie et l'id du matériel
-        /// </summary>
+        
         private int idMateriel;
         private int idCategorie;        
         private string nom;
@@ -37,12 +38,12 @@ namespace Matinfo.Metier
             this.Nom = nom;
             this.ReferenceConstructeur = referenceConstructeur;
         }
-
+        /// <summary>
+        /// Obtient ou définit le code barre
+        /// </summary>
         public string CodeBarre
         {
-            /// <summary>
-            /// Obtient ou définit le code barre
-            /// </summary>
+           
             get
             {
                 return this.codeBarre;
@@ -53,12 +54,12 @@ namespace Matinfo.Metier
                 this.codeBarre = value;
             }
         }
-
+        /// <summary>
+        /// Obtient ou définit le nom
+        /// </summary>
         public string Nom
         {
-            /// <summary>
-            /// Obtient ou définit le nom
-            /// </summary>
+          
             get
             {
                 return this.nom;
@@ -69,12 +70,12 @@ namespace Matinfo.Metier
                 this.nom = value;
             }
         }
-
+        /// <summary>
+        /// Obtient ou définit la référence constructeur
+        /// </summary>
         public string ReferenceConstructeur
         {
-            /// <summary>
-            /// Obtient ou définit la référence constructeur
-            /// </summary>
+           
             get
             {
                 return this.referenceConstructeur;
@@ -85,12 +86,12 @@ namespace Matinfo.Metier
                 this.referenceConstructeur = value;
             }
         }
-
+        /// <summary>
+        /// Obtient ou définit l'id du matériel
+        /// </summary>
         public int IdMateriel
         {
-            /// <summary>
-            /// Obtient ou définit l'id du matériel
-            /// </summary>
+         
             get
             {
                 return this.idMateriel;
@@ -101,13 +102,13 @@ namespace Matinfo.Metier
                 this.idMateriel = value;
             }
         }
-
+        /// <summary>
+        /// Obtient ou définit l'id de la catégorie
+        /// </summary>
         public int IdCategorie
         {
 
-            /// <summary>
-            /// Obtient ou définit l'id de la catégorie
-            /// </summary>
+            
             get
             {
                 return this.idCategorie;
@@ -118,12 +119,12 @@ namespace Matinfo.Metier
                 this.idCategorie = value;
             }
         }
-
+        /// <summary>
+        /// Obtient ou définit la catégorie du matériel
+        /// </summary>
         public CategorieMateriel UneCategorie
         {
-            /// <summary>
-            /// Obtient ou définit la catégorie du matériel
-            /// </summary>
+           
 
             get
             {
@@ -135,12 +136,12 @@ namespace Matinfo.Metier
                 this.uneCategorie = value;
             }
         }
-
+        /// <summary>
+        /// Obtient la base de données des atttributions
+        /// </summary>
         public ObservableCollection<Attribution> LesAttributions
         {
-            /// <summary>
-            /// Obtient la base de données des atttributions
-            /// </summary>
+          
             get
             {
                 return this.lesAttributions;
@@ -151,13 +152,13 @@ namespace Matinfo.Metier
                 this.lesAttributions = value;
             }
         }
-
+        /// <summary>
+        ///Creation de la catégorie du matériel
+        /// </summary>
+        /// <returns>Un vrai si la création à bien marché ou un faux si cela n'a pas marché</returns>
         public bool Create()
         {
-            /// <summary>
-            ///Creation de la catégorie du matériel
-            /// </summary>
-            /// <returns>Un vrai si la création à bien marché ou un faux si cela n'a pas marché</returns>
+
 
 
 
@@ -173,14 +174,19 @@ namespace Matinfo.Metier
             accessDB.SetData(requete);
             return true;
         }
-
+        /// <summary>
+        ///Suppréssion d'un matériel
+        /// </summary>
         public void Delete()
         {
             DataAccess accessDB = new DataAccess();
             string requete = "DELETE FROM materiel WHERE \"idmateriel\"=" + this.IdMateriel;
             accessDB.SetData(requete);
         }
-
+        /// <summary>
+        ///Cherche tous les matériaux dans la base de données
+        /// </summary>
+        /// <returns>Tous les matériaux</returns>
         public ObservableCollection<Materiel> FindAll()
         {
             ObservableCollection<Materiel> LesMateriaux = new ObservableCollection<Materiel>();
@@ -197,7 +203,10 @@ namespace Matinfo.Metier
             }
             return LesMateriaux;
         }
-
+        /// <summary>
+        ///Cherche le matériel selectionné dans la base de données
+        /// </summary>
+        /// <returns>Tous les matériaux selectionnées</returns>
         public ObservableCollection<Materiel> FindBySelection(string criteres)
         {
             ObservableCollection<Materiel> LesMateriaux = new ObservableCollection<Materiel>();
@@ -214,7 +223,10 @@ namespace Matinfo.Metier
             }
             return LesMateriaux;
         }
-
+        /// <summary>
+        ///Cherche si il n'existe pas déjà un matériel existant avec le code barre
+        /// </summary>
+        /// <returns>Vrai s'il existe ou faux s'il n'existe pas</returns>
         public bool Read()
         {
             int ancienID = this.IdMateriel;
@@ -234,7 +246,10 @@ namespace Matinfo.Metier
             }
             return false;
         }
-
+        /// <summary>
+        ///Modifie un personnel existant
+        /// </summary>
+        /// <returns>Vrai s'il y a bien eu modification</returns>
         public bool Update()
         {
             int idMaterielmodifie = this.IdMateriel;
