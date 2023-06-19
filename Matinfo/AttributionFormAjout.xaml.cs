@@ -23,19 +23,21 @@ namespace Matinfo
     {
         public Attribution attribution { get; set; }
 
-        public AttributionFormAjout(Attribution attribution)
+        public AttributionFormAjout(Attribution attribution, ApplicationData applicationData)
         {
             InitializeComponent();
             this.attribution = attribution;
             this.DataContext = attribution;
             this.attribution.DateAttribution = DateTime.Today;
-            this.attribution.IdMateriel = 1;
-            this.attribution.IdPersonnel = 1;
+            this.cbMateriel.ItemsSource = applicationData.LesMateriaux;
+            this.cbPersonnel.ItemsSource = applicationData.LesPersonnels;
+            cbMateriel.DisplayMemberPath = "Nom";
+            cbPersonnel.DisplayMemberPath = "Nom";
         }
 
         private void Button_Click_Ajouter(object sender, RoutedEventArgs e)
         {
-            Attribution attributionActuelle = new Attribution(int.Parse(tbIdPersonnel.Text), int.Parse(tbIdMateriel.Text), tbCommentaire.Text, (DateTime)dpDate.SelectedDate);
+            Attribution attributionActuelle = new Attribution(((Personnel)cbPersonnel.SelectedItem).IdPersonnel, ((Materiel)cbMateriel.SelectedItem).IdMateriel, tbCommentaire.Text, (DateTime)dpDate.SelectedDate);
             /// test si il existe déjà une même attribution
             if (attributionActuelle.Read())
             {
@@ -43,8 +45,9 @@ namespace Matinfo
                 return;
             }
             attributionActuelle.Create();
-            tbIdMateriel.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            tbIdPersonnel.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.attribution = attributionActuelle;
+            cbMateriel.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            cbPersonnel.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
             tbCommentaire.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             dpDate.GetBindingExpression(DatePicker.SelectedDateProperty).UpdateSource();
             DialogResult = true;

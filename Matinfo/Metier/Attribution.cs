@@ -152,10 +152,8 @@ namespace Matinfo.Metier
         /// </summary>
         public void Delete()
         {
-            
-            
             DataAccess accessDB = new DataAccess();
-            string requete = "DELETE FROM attributions WHERE (\"idpersonnel\"=" + this.IdPersonnel + " AND \"idmateriel\"=" + this.IdMateriel + " AND \"dateattribution\"=" + this.DateAttribution + ")";
+            string requete = string.Format("DELETE FROM attributions WHERE (idpersonnel= {0} AND idmateriel = {1} AND dateattribution = '{2}')", this.IdPersonnel, this.IdMateriel, this.DateAttribution.ToString("dd/MM/yyyy"));
             accessDB.SetData(requete);
         }
         /// <summary>

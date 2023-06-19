@@ -181,7 +181,7 @@ namespace Matinfo
         private void Button_Click_FormAjoutAttribution(object sender, RoutedEventArgs e)
         {
             Attribution attributionCree = new Attribution();
-            AttributionFormAjout formAjoutAttribution = new AttributionFormAjout(attributionCree);
+            AttributionFormAjout formAjoutAttribution = new AttributionFormAjout(attributionCree, this.applicationData);
             formAjoutAttribution.Owner = this;
             bool result = (bool)formAjoutAttribution.ShowDialog();
             if (result)

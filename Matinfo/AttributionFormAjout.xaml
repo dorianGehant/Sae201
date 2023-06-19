@@ -1,75 +1,88 @@
-﻿<Window x:Class="Matinfo.AttributionFormAjout"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Matinfo"
-        mc:Ignorable="d"
-        Title="Formulaire ajout attribution"
-        Width="285"
-        Height="337"
-        WindowStartupLocation="CenterScreen">
+﻿<Window
+    x:Class="Matinfo.AttributionFormAjout"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Matinfo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Formulaire ajout attribution"
+    Width="285"
+    Height="337"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
     <Grid>
         <Label
             Margin="24,27,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="ID du personnel:"
+            Content="Choix du personnel:"
             RenderTransformOrigin="0.553,-0.037" />
-        <TextBox x:Name="tbIdPersonnel"
-            Width="232"
-            Margin="0,53,0,0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap" 
-            Text="{Binding IdPersonnel}"/>
         <Label
             Margin="24,79,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="ID du matériel :"
+            Content="Choix du matériel :"
             RenderTransformOrigin="0.553,-0.037" />
-        <TextBox x:Name="tbIdMateriel"
-            Width="232"
-            Margin="0,105,0,0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap" 
-            Text="{Binding IdMateriel}"/>
         <Label
             Margin="24,134,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Commentaire :"
             RenderTransformOrigin="0.553,-0.037" />
-        <TextBox x:Name="tbCommentaire"
+        <TextBox
+            x:Name="tbCommentaire"
             Width="232"
             Margin="0,160,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            TextWrapping="Wrap"
-            Text="{Binding Commentaire}"/>
+            Text="{Binding Commentaire}"
+            TextWrapping="Wrap" />
         <Label
             Margin="24,191,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Date d'attribution :"
             RenderTransformOrigin="0.553,-0.037" />
-        <DatePicker x:Name="dpDate" HorizontalAlignment="Center" Margin="0,217,0,0" VerticalAlignment="Top" Width="232" SelectedDate="{Binding DateAttribution}"/>
+        <DatePicker
+            x:Name="dpDate"
+            Width="232"
+            Margin="0,217,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            SelectedDate="{Binding DateAttribution}" />
         <Button
             Width="61"
             Height="26"
             Margin="45,266,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Ajouter" Click="Button_Click_Ajouter" />
+            Click="Button_Click_Ajouter"
+            Content="Ajouter" />
         <Button
             Width="53"
             Height="27"
             Margin="178,266,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Annuler" Click="Button_Click_Annuler"/>
-
+            Click="Button_Click_Annuler"
+            Content="Annuler" />
+        <ComboBox
+            x:Name="cbMateriel"
+            Width="232"
+            Margin="0,105,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            ItemsSource="{Binding}"
+            SelectedValuePath="IdMateriel"
+            SelectedValue="{Binding Path=IdMateriel}" />
+        <ComboBox
+            x:Name="cbPersonnel"
+            Width="232"
+            Margin="0,52,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            ItemsSource="{Binding}"
+            SelectedValuePath="IdPersonnel"
+            SelectedValue="{Binding Path=IdPersonnel}" />
     </Grid>
 </Window>
