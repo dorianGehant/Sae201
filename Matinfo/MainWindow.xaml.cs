@@ -30,7 +30,11 @@ namespace Matinfo
         }
 
      
-
+        /// <summary>
+        /// Ajoute personnel avec bouton
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btAjoutPersonnel_Click(object sender, RoutedEventArgs e)
         {
             Personnel persoCree = new Personnel();
@@ -43,7 +47,11 @@ namespace Matinfo
                 applicationData.RefreshAssociationsPersonnel();
             }
         }
-
+        /// <summary>
+        /// Modifie personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btModifPersonnel_Click(object sender, RoutedEventArgs e)
         {
             PersonnelForm formpersonnel = new PersonnelForm((Personnel)lvPersonnel.SelectedItem, true);
@@ -55,7 +63,11 @@ namespace Matinfo
                 applicationData.RefreshAssociationsPersonnel();
             }
         }
-
+        /// <summary>
+        /// Supprime personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_RemovePersonnel(object sender, RoutedEventArgs e)
         {
             MessageBoxResult resultat = MessageBoxResult.Yes;
@@ -77,7 +89,11 @@ namespace Matinfo
                 applicationData.LesPersonnels.Remove((Personnel)lvPersonnel.SelectedItem);
             }
         }
-
+        /// <summary>
+        /// Créer un matériel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_FormMateriel_Ajout(object sender, RoutedEventArgs e)
         {
             Materiel materielCree = new Materiel();
@@ -90,7 +106,11 @@ namespace Matinfo
                 applicationData.RefreshAssociationsMateriaux();
             }
         }
-
+        /// <summary>
+        /// Modifie un personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_FormMateriel_Modif(object sender, RoutedEventArgs e)
         {
             MaterielForm formMateriel = new MaterielForm((Materiel)lvMateriel.SelectedItem, true, this.applicationData);
@@ -102,7 +122,11 @@ namespace Matinfo
                 applicationData.RefreshAssociationsMateriaux();
             }
         }
-
+        /// <summary>
+        /// Supprime un matériel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_RemoveMateriel(object sender, RoutedEventArgs e)
         {
             MessageBoxResult resultat = MessageBoxResult.Yes;
@@ -126,6 +150,11 @@ namespace Matinfo
             applicationData.RefreshAssociationsMateriaux();
         }
 
+        /// <summary>
+        /// Ajout une catégorie de matériel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_AjoutFormCategorie(object sender, RoutedEventArgs e)
         {
             CategorieMateriel categorieCree = new CategorieMateriel();
@@ -138,7 +167,11 @@ namespace Matinfo
                 applicationData.RefreshAssociationsMateriaux();
             }
         }
-
+        /// <summary>
+        /// Modifie une catégorie de matériel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_ModifFormCategorie(object sender, RoutedEventArgs e)
         {
             CategorieForm formCategorie = new CategorieForm((CategorieMateriel)lvCategorie.SelectedItem, true);
@@ -151,6 +184,11 @@ namespace Matinfo
             }
         }
 
+        /// <summary>
+        /// Supprime une catégorie de matériel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_RemoveCategorie(object sender, RoutedEventArgs e)
         {
             MessageBoxResult resultat = MessageBoxResult.Yes;
@@ -177,7 +215,11 @@ namespace Matinfo
                 applicationData.LesCategories.Remove((CategorieMateriel)lvCategorie.SelectedItem);
             }
         }
-
+        /// <summary>
+        /// Ajoute une attribution
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_FormAjoutAttribution(object sender, RoutedEventArgs e)
         {
             Attribution attributionCree = new Attribution();
@@ -191,7 +233,11 @@ namespace Matinfo
                 applicationData.RefreshAssociationsPersonnel();
             }
         }
-
+        /// <summary>
+        /// Modifie une attribution
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_FormModifAttribution(object sender, RoutedEventArgs e)
         {
             AttributionFormModif formModifAttribution = new AttributionFormModif((Attribution)lvAttribution.SelectedItem);
@@ -204,13 +250,21 @@ namespace Matinfo
                 applicationData.RefreshAssociationsPersonnel();
             }
         }
-
+        /// <summary>
+        /// Supprime une attribution
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_RemoveAttribution(object sender, RoutedEventArgs e)
         {
             ((Attribution)lvAttribution.SelectedItem).Delete();
             applicationData.LesAttributions.Remove((Attribution)lvAttribution.SelectedItem);
         }
-
+        /// <summary>
+        /// Affiche les attributions lié au matériel selectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lvMateriel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(lvMateriel.SelectedItem != null)
@@ -224,12 +278,20 @@ namespace Matinfo
                 lvAttribution.ItemsSource = applicationData.LesAttributions;
             }
         }
-
+        /// <summary>
+        /// Re-affiche en déselectionnant le matériel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRefreshAttribution_Click(object sender, RoutedEventArgs e)
         {
             lvMateriel.SelectedItem = null;
         }
-
+        /// <summary>
+        /// Affiche les matériaux de la catégorie
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lvCategorie_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lvCategorie.SelectedItem != null)
@@ -244,7 +306,11 @@ namespace Matinfo
                 lvMateriel.ItemsSource = "";
             }
         }
-
+        /// <summary>
+        /// Déselectionne la catégorie qui remet la liste de matériaux
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDeselecCat_Click(object sender, RoutedEventArgs e)
         {
             lvCategorie.SelectedItem = null;

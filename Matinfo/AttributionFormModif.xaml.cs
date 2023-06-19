@@ -29,7 +29,12 @@ namespace Matinfo
             this.attribution = attribution;
             this.DataContext = attribution;
         }
-
+        /// <summary>
+        /// Teste la vérification et la valide ou non
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <returns>Faux si il y a déjà existence</returns>
         private void Button_Click_Ajouter(object sender, RoutedEventArgs e)
         {
             Attribution attributionActuelle = new Attribution(attribution.IdMateriel, attribution.IdMateriel, tbCommentaire.Text, (DateTime)dpDate.SelectedDate);

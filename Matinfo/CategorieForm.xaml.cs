@@ -28,6 +28,9 @@ namespace Matinfo
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Ajoute une catégorie de matériel avec le formulaire
+        /// </summary>
         public CategorieForm(CategorieMateriel categorie, bool estFormModification)
         {
             InitializeComponent();

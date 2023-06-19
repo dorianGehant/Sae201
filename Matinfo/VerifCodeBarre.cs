@@ -8,12 +8,21 @@ using System.Windows.Controls;
 
 namespace Matinfo
 {
+    /// <summary>
+    /// Vérification code barre
+    /// </summary>
     public class VerifCodeBarre : ValidationRule
     {
         public VerifCodeBarre()
         {
 
         }
+        /// <summary>
+        /// Vérification du format du Code barre
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="cultureInfo"></param>
+        /// <returns>La validité du résultat</returns>
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {

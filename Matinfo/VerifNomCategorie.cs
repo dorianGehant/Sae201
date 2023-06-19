@@ -8,13 +8,21 @@ using System.Windows.Controls;
 
 namespace Matinfo
 {
+    /// <summary>
+    /// Vérification de la catégorie
+    /// </summary>
     public class VerifNomCategorie : ValidationRule
     {
         public VerifNomCategorie()
         {
 
         }
-
+        /// <summary>
+        /// Vérification du format du nom de la catégorie
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="cultureInfo"></param>
+        /// <returns>La validité du résultat</returns>
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             string nomCat;

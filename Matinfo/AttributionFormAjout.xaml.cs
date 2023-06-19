@@ -44,7 +44,7 @@ namespace Matinfo
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        /// <re
+        /// <returns>Faux si il y a déjà existence</returns>
         private void Button_Click_Ajouter(object sender, RoutedEventArgs e)
         {
             Attribution attributionActuelle = new Attribution(((Personnel)cbPersonnel.SelectedItem).IdPersonnel, ((Materiel)cbMateriel.SelectedItem).IdMateriel, tbCommentaire.Text, (DateTime)dpDate.SelectedDate);
