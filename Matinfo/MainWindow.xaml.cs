@@ -127,14 +127,27 @@ namespace Matinfo
 
         private void Button_Click_AjoutFormCategorie(object sender, RoutedEventArgs e)
         {
-            CategorieForm formCategorie = new CategorieForm();
-            formCategorie.Show();
+            CategorieMateriel categorieCree = new CategorieMateriel();
+            CategorieForm formCategorie = new CategorieForm(categorieCree, false);
+            formCategorie.Owner = this;
+            bool result = (bool)formCategorie.ShowDialog();
+            if (result)
+            {
+                applicationData.LesCategories.Add(categorieCree);
+                applicationData.RefreshAssociationsMateriaux();
+            }
         }
 
         private void Button_Click_ModifFormCategorie(object sender, RoutedEventArgs e)
         {
-            CategorieForm formCategorie = new CategorieForm();
-            formCategorie.Show();
+            CategorieForm formCategorie = new CategorieForm((CategorieMateriel)lvCategorie.SelectedItem, true);
+            formCategorie.Owner = this;
+            bool result = (bool)formCategorie.ShowDialog();
+            if (result)
+            {
+                lvCategorie.Items.Refresh();
+                applicationData.RefreshAssociationsMateriaux();
+            }
         }
 
         private void Button_Click_RemoveCategorie(object sender, RoutedEventArgs e)
@@ -193,8 +206,47 @@ namespace Matinfo
 
         private void Button_Click_RemoveAttribution(object sender, RoutedEventArgs e)
         {
-            lvAttribution.Items.Remove(lvAttribution.SelectedItem);
+            ((Attribution)lvAttribution.SelectedItem).Delete();
+            applicationData.LesAttributions.Remove((Attribution)lvAttribution.SelectedItem);
         }
 
+        private void lvMateriel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(lvMateriel.SelectedItem != null)
+            {
+                lvAttribution.ItemsSource = ((Materiel)lvMateriel.SelectedItem).LesAttributions;
+                btnRefreshAttribution.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnRefreshAttribution.Visibility = Visibility.Hidden;
+                lvAttribution.ItemsSource = applicationData.LesAttributions;
+            }
+        }
+
+        private void btnRefreshAttribution_Click(object sender, RoutedEventArgs e)
+        {
+            lvMateriel.SelectedItem = null;
+        }
+
+        private void lvCategorie_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lvCategorie.SelectedItem != null)
+            {
+                btnDeselecCat.Visibility = Visibility.Visible;
+                lvMateriel.SelectedItem = null;
+                lvMateriel.ItemsSource = ((CategorieMateriel)lvCategorie.SelectedItem).LesMateriaux;
+            }
+            else
+            {
+                btnDeselecCat.Visibility = Visibility.Hidden;
+                lvMateriel.ItemsSource = "";
+            }
+        }
+
+        private void btnDeselecCat_Click(object sender, RoutedEventArgs e)
+        {
+            lvCategorie.SelectedItem = null;
+        }
     }
 }

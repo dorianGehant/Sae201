@@ -167,7 +167,7 @@ namespace Matinfo.Metier
         {
             ObservableCollection<Materiel> LesMateriaux = new ObservableCollection<Materiel>();
             DataAccess accesBD = new DataAccess();
-            String requete = "select idmateriel, idcategorie, nommateriel, referenceconstructeur, codebarre from materiel" + criteres;
+            String requete = "select idmateriel, idcategorie, nommateriel, referenceconstructeur, codebarre from materiel " + criteres;
             DataTable datas = accesBD.GetData(requete);
             if (datas != null)
             {

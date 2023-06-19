@@ -9,21 +9,22 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Nom de la categorie :" HorizontalAlignment="Left" Margin="19,36,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="18" Margin="22,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
-        <Button
+        <TextBox x:Name="tbNomCat" HorizontalAlignment="Left" Height="18" Margin="22,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"
+                 Text="{Binding Nom, UpdateSourceTrigger=Explicit}"/>
+        <Button x:Name="btnConfirmation"
             Width="63"
             Height="28"
             Margin="10,125,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Confirmer" Click="Button_Click" />
-        <Button
+            Content="Confirmer" Click="Button_Click_Ajouter" />
+        <Button x:Name="btnCancel"
             Width="52"
             Height="29"
             Margin="106,124,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Annuler" Click="Button_Click"/>
+            Content="Annuler" Click="Button_Click_Annuler"/>
 
     </Grid>
 </Window>

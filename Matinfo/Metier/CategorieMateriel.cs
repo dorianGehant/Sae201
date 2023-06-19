@@ -108,7 +108,7 @@ namespace Matinfo.Metier
         {
             ObservableCollection<CategorieMateriel> LesCategories = new ObservableCollection<CategorieMateriel>();
             DataAccess accesBD = new DataAccess();
-            String requete = "select idcategorie, nomcategorie, nompersonnel, prenompersonnel from" + criteres;
+            String requete = "select idcategorie, nomcategorie, nompersonnel, prenompersonnel from categorie_materiel " + criteres;
             DataTable datas = accesBD.GetData(requete);
             if (datas != null)
             {
@@ -124,7 +124,7 @@ namespace Matinfo.Metier
         public bool Read()
         {
             DataAccess accesBD = new DataAccess();
-            String requete = string.Format("select idcategorie from personnel where nomcategorie = '{0}'", this.Nom);
+            String requete = string.Format("select idcategorie from categorie_materiel where nomcategorie = '{0}'", this.Nom);
             DataTable datas = accesBD.GetData(requete);
             if (datas != null)
             {

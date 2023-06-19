@@ -29,7 +29,7 @@ namespace Matinfo
             this.personnel = personnel;
             if (estFormModification)
             {
-                this.Title = "Formulaire modification materiel";
+                this.Title = "Formulaire modification personnel";
                 btnConfirmer.Content = "Modifier";
                 btnConfirmer.Click -= Button_Click_Ajouter;
                 btnConfirmer.Click += Button_Click_Modifier;
@@ -40,7 +40,7 @@ namespace Matinfo
         private void Button_Click_Ajouter(object sender, RoutedEventArgs e)
         {
             Personnel personnelActuel = new Personnel(personnel.IdPersonnel, tbNom.Text, tbPrenom.Text, tbEmail.Text);
-            /// si le matériel a bien été créé dans la base, on l'ajoute dans l'application
+            /// si le personnel a bien été créé dans la base, on l'ajoute dans l'application
             if (personnelActuel.Create())
             {
                 tbNom.GetBindingExpression(TextBox.TextProperty).UpdateSource();
@@ -54,7 +54,7 @@ namespace Matinfo
         private void Button_Click_Modifier(object sender, RoutedEventArgs e)
         {
             Personnel personnelActuel = new Personnel(personnel.IdPersonnel, tbNom.Text, tbPrenom.Text, tbEmail.Text);
-            /// si le matériel a bien été mis à jour, on le met à jour dans l'application
+            /// si le personnel a bien été mis à jour, on le met à jour dans l'application
             if (personnelActuel.Update())
             {
                 tbNom.GetBindingExpression(TextBox.TextProperty).UpdateSource();

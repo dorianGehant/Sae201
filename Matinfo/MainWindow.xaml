@@ -18,10 +18,11 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="375*" />
+            <ColumnDefinition Width="375*" />
+            <ColumnDefinition Width="281*" />
+            <ColumnDefinition Width="94*"/>
+            <ColumnDefinition Width="375*" />
         </Grid.ColumnDefinitions>
         <ListView
             x:Name="lvPersonnel"
@@ -35,19 +36,21 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="btAjoutPersonnel"
+        <Button
+            x:Name="btAjoutPersonnel"
             Width="80"
             Margin="0,369,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            Content="Ajouter" Click="btAjoutPersonnel_Click" />
+            Click="btAjoutPersonnel_Click"
+            Content="Ajouter" />
         <Button
             Width="80"
             Margin="0,402,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            
-            Content="Modifier" Click="btModifPersonnel_Click" />
+            Click="btModifPersonnel_Click"
+            Content="Modifier" />
         <Button
             Width="80"
             Margin="0,435,0,0"
@@ -59,8 +62,9 @@
             x:Name="lvMateriel"
             Grid.Column="1"
             Grid.ColumnSpan="2"
-            Margin="0,49,187,107"
-            ItemsSource="{Binding Path=LesMateriaux}">
+            Margin="0,49,93,107"
+            ItemsSource="{x:Null}"
+            SelectionChanged="lvMateriel_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Nom}" Header="Nom" />
@@ -98,7 +102,8 @@
             x:Name="lvCategorie"
             Grid.Column="2"
             Margin="198,48,10,108"
-            ItemsSource="{Binding Path=LesCategories}">
+            ItemsSource="{Binding Path=LesCategories}"
+            SelectionChanged="lvCategorie_SelectionChanged" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Nom}" Header="Nom" />
@@ -112,7 +117,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="Button_Click_AjoutFormCategorie"
-            Content="Ajouter" />
+            Content="Ajouter" Grid.ColumnSpan="2" />
         <Button
             Grid.Column="2"
             Width="80"
@@ -120,7 +125,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="Button_Click_ModifFormCategorie"
-            Content="Modifier" />
+            Content="Modifier" Grid.ColumnSpan="2" />
         <Button
             Grid.Column="2"
             Width="80"
@@ -128,10 +133,10 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="Button_Click_RemoveCategorie"
-            Content="Supprimer" />
+            Content="Supprimer" Grid.ColumnSpan="2" />
         <ListView
             x:Name="lvAttribution"
-            Grid.Column="3"
+            Grid.Column="4"
             Margin="10,49,10,107"
             ItemsSource="{Binding Path=LesAttributions}">
             <ListView.View>
@@ -144,7 +149,7 @@
             </ListView.View>
         </ListView>
         <Button
-            Grid.Column="3"
+            Grid.Column="4"
             Width="80"
             Margin="0,367,0,0"
             HorizontalAlignment="Center"
@@ -152,7 +157,7 @@
             Click="Button_Click_FormAjoutAttribution"
             Content="Ajouter" />
         <Button
-            Grid.Column="3"
+            Grid.Column="4"
             Width="80"
             Margin="0,398,0,0"
             HorizontalAlignment="Center"
@@ -160,7 +165,7 @@
             Click="Button_Click_FormModifAttribution"
             Content="Modifier" />
         <Button
-            Grid.Column="3"
+            Grid.Column="4"
             Width="80"
             Margin="0,430,0,0"
             HorizontalAlignment="Center"
@@ -186,14 +191,25 @@
             Margin="217,10,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Categories de materiel" />
+            Content="Categories de materiel" Grid.ColumnSpan="2" />
         <Label
             x:Name="lbAttribution"
-            Grid.Column="3"
+            Grid.Column="4"
             Margin="155,10,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Attributions" />
+        <Button
+            x:Name="btnRefreshAttribution"
+            Grid.Column="4"
+            Width="93"
+            Margin="45,13,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="btnRefreshAttribution_Click"
+            Content="Reafficher tout" 
+            Visibility="Hidden"/>
+        <Button x:Name="btnDeselecCat" Grid.Column="2" Content="Déselectionner" HorizontalAlignment="Left" Margin="129,13,0,0" VerticalAlignment="Top" Click="btnDeselecCat_Click" />
 
     </Grid>
 </Window>

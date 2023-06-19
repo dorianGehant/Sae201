@@ -139,7 +139,7 @@ namespace Matinfo.Metier
         {
             ObservableCollection<Personnel> LesPersonnels = new ObservableCollection<Personnel>();
             DataAccess accesBD = new DataAccess();
-            String requete = "select idpersonnel, emailpersonnel, nompersonnel, prenompersonnel from personnel" + criteres;
+            String requete = "select idpersonnel, emailpersonnel, nompersonnel, prenompersonnel from personnel " + criteres;
             DataTable datas = accesBD.GetData(requete);
             if (datas != null)
             {
