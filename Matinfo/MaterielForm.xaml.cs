@@ -22,6 +22,8 @@ namespace Matinfo
     {
         public Materiel materiel {  get; set; }
 
+
+
         public MaterielForm(Materiel materiel, bool estFormModification, ApplicationData applicationData)
         {
             InitializeComponent();
@@ -37,7 +39,12 @@ namespace Matinfo
                 btnConfirmer.Click += Button_Click_Modifier;
             }
         }
-
+        /// <summary>
+        /// Ajout un materiel avec le formulaire
+        /// </summary>
+        /// <returns>S'il y a une erreur</returns>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_Ajouter(object sender, RoutedEventArgs e)
         {
             Materiel materielActuel = new Materiel(materiel.IdMateriel, ((CategorieMateriel)cbCatMateriel.SelectedItem).IdCategorie, tbCodeBarre.Text, tbNomMateriel.Text, tbRefConstructeur.Text);
@@ -60,6 +67,12 @@ namespace Matinfo
             this.materiel.Read();
         }
 
+        /// <summary>
+        /// Modifie un materiel avec le formulaire
+        /// </summary>
+        /// <retunrs>S'il y a une erreur</retunrs>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_Modifier(object sender, RoutedEventArgs e)
         {
             Materiel materielActuel = new Materiel(materiel.IdMateriel, ((CategorieMateriel)cbCatMateriel.SelectedItem).IdCategorie, tbCodeBarre.Text, tbNomMateriel.Text, tbRefConstructeur.Text);
@@ -80,7 +93,11 @@ namespace Matinfo
                 DialogResult = true;
             }
         }
-
+        /// <summary>
+        /// Annule la modification
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_Annuler(object sender, RoutedEventArgs e)
         {
             DialogResult = false;

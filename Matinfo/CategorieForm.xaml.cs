@@ -28,6 +28,9 @@ namespace Matinfo
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Ajoute une categorie de materiel avec le formulaire
+        /// </summary>
         public CategorieForm(CategorieMateriel categorie, bool estFormModification)
         {
             InitializeComponent();
@@ -35,13 +38,18 @@ namespace Matinfo
             this.categorie = categorie;
             if (estFormModification)
             {
-                this.Title = "Formulaire modification categorie matériel";
+                this.Title = "Formulaire modification categorie materiel";
                 btnConfirmation.Content = "Modifier";
                 btnConfirmation.Click -= Button_Click_Ajouter;
                 btnConfirmation.Click += Button_Click_Modifier;
             }
         }
-
+        /// <summary>
+        /// Teste la verification et la valide ou non, creer ensuite
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <returns>Faux si il y a dejà existence</returns>
         private void Button_Click_Ajouter(object sender, RoutedEventArgs e)
         {
             CategorieMateriel categorieActuelle = new CategorieMateriel(categorie.IdCategorie, tbNomCat.Text);
@@ -49,7 +57,7 @@ namespace Matinfo
 
             if (Validation.GetHasError((DependencyObject)tbNomCat))
             {
-                MessageBox.Show(this.Owner, "Saisie du nom de catégorie invalide", "problème nom catégorie", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(this.Owner, "Saisie du nom de categorie invalide", "problème nom categorie", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (categorieActuelle.Create())
@@ -58,14 +66,19 @@ namespace Matinfo
             }
             this.categorie.Read();
         }
-
+        /// <summary>
+        /// Teste la verification et la valide ou non, modifie ensuite
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <returns>Faux si il y a dejà existence</returns>
         private void Button_Click_Modifier(object sender, RoutedEventArgs e)
         {
             CategorieMateriel categorieActuelle = new CategorieMateriel(categorie.IdCategorie, tbNomCat.Text);
             tbNomCat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             if (Validation.GetHasError((DependencyObject)tbNomCat))
             {
-                MessageBox.Show(this.Owner, "Saisie du nom de catégorie invalide", "problème nom catégorie", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(this.Owner, "Saisie du nom de categorie invalide", "problème nom categorie", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (categorieActuelle.Update())

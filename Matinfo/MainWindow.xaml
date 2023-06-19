@@ -8,9 +8,9 @@
     xmlns:model="clr-namespace:Matinfo.Metier"
     Title="MATINFO"
     Width="1500"
-    Height="500"
+    Height="556"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d">
+    mc:Ignorable="d" MaxWidth="1500" MinWidth="1500" MinHeight="400">
 
     <Window.DataContext>
         <model:ApplicationData x:Name="applicationData" />
@@ -26,7 +26,7 @@
         </Grid.ColumnDefinitions>
         <ListView
             x:Name="lvPersonnel"
-            Margin="10,49,10,107"
+            Margin="10,91,10,107"
             ItemsSource="{Binding Path=LesPersonnels}">
             <ListView.View>
                 <GridView>
@@ -39,30 +39,27 @@
         <Button
             x:Name="btAjoutPersonnel"
             Width="80"
-            Margin="0,369,0,0"
+            Margin="0,0,0,79"
             HorizontalAlignment="Center"
-            VerticalAlignment="Top"
             Click="btAjoutPersonnel_Click"
-            Content="Ajouter" />
+            Content="Ajouter" Height="20" VerticalAlignment="Bottom" />
         <Button
             Width="80"
-            Margin="0,402,0,0"
+            Margin="0,0,0,54"
             HorizontalAlignment="Center"
-            VerticalAlignment="Top"
             Click="btModifPersonnel_Click"
-            Content="Modifier" />
+            Content="Modifier" Height="20" VerticalAlignment="Bottom" />
         <Button
             Width="80"
-            Margin="0,435,0,0"
+            Margin="0,0,0,29"
             HorizontalAlignment="Center"
-            VerticalAlignment="Top"
             Click="Button_Click_RemovePersonnel"
-            Content="Supprimer" />
+            Content="Supprimer" Height="20" VerticalAlignment="Bottom" />
         <ListView
             x:Name="lvMateriel"
             Grid.Column="1"
             Grid.ColumnSpan="2"
-            Margin="0,49,93,107"
+            Margin="0,91,93,107"
             ItemsSource="{x:Null}"
             SelectionChanged="lvMateriel_SelectionChanged">
             <ListView.View>
@@ -77,31 +74,31 @@
         <Button
             Grid.Column="1"
             Width="80"
-            Margin="228,366,0,0"
+            Margin="228,0,0,79"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Bottom"
             Click="Button_Click_FormMateriel_Ajout"
             Content="Ajouter" />
         <Button
             Grid.Column="1"
             Width="80"
-            Margin="228,397,0,0"
+            Margin="228,0,0,54"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Bottom"
             Click="Button_Click_FormMateriel_Modif"
             Content="Modifier" />
         <Button
             Grid.Column="1"
             Width="80"
-            Margin="228,430,0,0"
+            Margin="228,0,0,29"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Bottom"
             Click="Button_Click_RemoveMateriel"
             Content="Supprimer" />
         <ListView
             x:Name="lvCategorie"
             Grid.Column="2"
-            Margin="198,48,10,108"
+            Margin="198,91,10,108"
             ItemsSource="{Binding Path=LesCategories}"
             SelectionChanged="lvCategorie_SelectionChanged" Grid.ColumnSpan="2">
             <ListView.View>
@@ -113,31 +110,31 @@
         <Button
             Grid.Column="2"
             Width="80"
-            Margin="246,367,0,0"
+            Margin="242,0,0,79"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Bottom"
             Click="Button_Click_AjoutFormCategorie"
             Content="Ajouter" Grid.ColumnSpan="2" />
         <Button
             Grid.Column="2"
             Width="80"
-            Margin="246,398,0,0"
+            Margin="242,0,0,54"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Bottom"
             Click="Button_Click_ModifFormCategorie"
             Content="Modifier" Grid.ColumnSpan="2" />
         <Button
             Grid.Column="2"
             Width="80"
-            Margin="246,430,0,0"
+            Margin="242,0,0,29"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Bottom"
             Click="Button_Click_RemoveCategorie"
             Content="Supprimer" Grid.ColumnSpan="2" />
         <ListView
             x:Name="lvAttribution"
             Grid.Column="4"
-            Margin="10,49,10,107"
+            Margin="10,91,10,107"
             ItemsSource="{Binding Path=LesAttributions}">
             <ListView.View>
                 <GridView>
@@ -151,54 +148,53 @@
         <Button
             Grid.Column="4"
             Width="80"
-            Margin="0,367,0,0"
+            Margin="0,0,0,79"
             HorizontalAlignment="Center"
-            VerticalAlignment="Top"
             Click="Button_Click_FormAjoutAttribution"
-            Content="Ajouter" />
+            Content="Ajouter" Height="20" VerticalAlignment="Bottom" />
         <Button
             Grid.Column="4"
             Width="80"
-            Margin="0,398,0,0"
+            Margin="0,0,0,54"
             HorizontalAlignment="Center"
-            VerticalAlignment="Top"
+            VerticalAlignment="Bottom"
             Click="Button_Click_FormModifAttribution"
             Content="Modifier" />
         <Button
             Grid.Column="4"
             Width="80"
-            Margin="0,430,0,0"
+            Margin="0,0,0,29"
             HorizontalAlignment="Center"
-            VerticalAlignment="Top"
+            VerticalAlignment="Bottom"
             Click="Button_Click_RemoveAttribution"
             Content="Supprimer" />
         <Label
             x:Name="lbPersonnel"
-            Margin="0,10,0,0"
+            Margin="0,60,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            Content="Personnels" />
+            Content="PERSONNELS" FontFamily="MS Reference Sans Serif" />
         <Label
             x:Name="lbMateriel"
             Grid.Column="1"
-            Margin="237,10,0,0"
+            Margin="237,60,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Materiaux" />
+            Content="MATERIAUX" FontFamily="MS Reference Sans Serif" />
         <Label
             x:Name="lbCategories"
             Grid.Column="2"
-            Margin="217,10,0,0"
+            Margin="197,60,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Categories de materiel" Grid.ColumnSpan="2" />
+            Content="CATEGORIE DE MATERIEL" Grid.ColumnSpan="2" FontFamily="MS Reference Sans Serif" />
         <Label
             x:Name="lbAttribution"
             Grid.Column="4"
-            Margin="155,10,0,0"
+            Margin="155,60,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Attributions" />
+            Content="ATTRIBUTIONS" FontFamily="MS Reference Sans Serif" />
         <Button
             x:Name="btnRefreshAttribution"
             Grid.Column="4"
@@ -209,7 +205,8 @@
             Click="btnRefreshAttribution_Click"
             Content="Reafficher tout" 
             Visibility="Hidden"/>
-        <Button x:Name="btnDeselecCat" Grid.Column="2" Content="Déselectionner" HorizontalAlignment="Left" Margin="129,13,0,0" VerticalAlignment="Top" Click="btnDeselecCat_Click" />
+        <Button x:Name="btnDeselecCat" Grid.Column="2" Content="Déselectionner" HorizontalAlignment="Left" Margin="109,62,0,0" VerticalAlignment="Top" Click="btnDeselecCat_Click" />
+        <Image Grid.Column="1" HorizontalAlignment="Left" Height="162" Margin="294,-58,0,0" VerticalAlignment="Top" Width="166" Grid.ColumnSpan="2" Source="/logo.png"/>
 
     </Grid>
 </Window>

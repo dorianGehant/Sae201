@@ -23,8 +23,13 @@ namespace Matinfo
     {
         public Attribution attribution { get; set; }
 
+
+        /// <summary>
+        /// Ajoute une attribution avec le formulaire
+        /// </summary>
         public AttributionFormAjout(Attribution attribution, ApplicationData applicationData)
         {
+
             InitializeComponent();
             this.attribution = attribution;
             this.DataContext = attribution;
@@ -34,14 +39,19 @@ namespace Matinfo
             cbMateriel.DisplayMemberPath = "Nom";
             cbPersonnel.DisplayMemberPath = "Nom";
         }
-
+        /// <summary>
+        /// Teste la verification et la valide ou non
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <returns>Faux si il y a dejà existence</returns>
         private void Button_Click_Ajouter(object sender, RoutedEventArgs e)
         {
             Attribution attributionActuelle = new Attribution(((Personnel)cbPersonnel.SelectedItem).IdPersonnel, ((Materiel)cbMateriel.SelectedItem).IdMateriel, tbCommentaire.Text, (DateTime)dpDate.SelectedDate);
-            /// test si il existe déjà une même attribution
+            /// test si il existe dejà une même attribution
             if (attributionActuelle.Read())
             {
-                MessageBox.Show("Erreur lors de la création de l'attribution : il existe déjà une attribution entre le materiel et le personnel à la date donnée", "Problème lors de la modification", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Erreur lors de la creation de l'attribution : il existe dejà une attribution entre le materiel et le personnel à la date donnee", "Problème lors de la modification", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             attributionActuelle.Create();
