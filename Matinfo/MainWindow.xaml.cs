@@ -123,6 +123,7 @@ namespace Matinfo
                 }
                 applicationData.LesMateriaux.Remove((Materiel)lvMateriel.SelectedItem);
             }
+            applicationData.RefreshAssociationsMateriaux();
         }
 
         private void Button_Click_AjoutFormCategorie(object sender, RoutedEventArgs e)

@@ -7,9 +7,22 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Formulaire personnel"
     Width="285"
-    Height="276"
+    Height="310"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+
+    <Window.Resources>
+        <ControlTemplate x:Key="EmailError">
+            <StackPanel>
+                <Border BorderBrush="Red" BorderThickness="1">
+                    <AdornedElementPlaceholder x:Name="element"/>
+                </Border>
+                <TextBlock x:Name="tbError" Foreground="red" Margin="5, 0, 0, 0" FontSize="12pt"
+                           Text="{Binding ElementName =element, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"/>
+            </StackPanel>
+        </ControlTemplate>
+    </Window.Resources>
+
     <Grid>
         <Label
             Margin="24,27,0,0"
@@ -45,18 +58,22 @@
             VerticalAlignment="Top"
             Content="Email :"
             RenderTransformOrigin="0.553,-0.037" />
-        <TextBox x:Name="tbEmail"
-            Width="232"
-            Margin="0,160,0,0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap" 
-            Text="{Binding Path=Email, UpdateSourceTrigger=Explicit}"/>
+        
+        <TextBox x:Name="tbEmail" HorizontalAlignment="Center" Height="18" Margin="0,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"
+                 Validation.ErrorTemplate="{StaticResource EmailError}">
+            <TextBox.Text>
+                <Binding Path="Email" UpdateSourceTrigger="Explicit">
+                    <Binding.ValidationRules>
+                        <local:VerifEmailPersonnel/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <Button
             x:Name="btnConfirmer"
             Width="61"
             Height="26"
-            Margin="46,198,0,0"
+            Margin="45,220,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
 
@@ -66,7 +83,7 @@
             x:Name="btnAnnuler"
             Width="53"
             Height="27"
-            Margin="179,198,0,0"
+            Margin="180,219,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="Button_Click_Annuler"

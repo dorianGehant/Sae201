@@ -182,6 +182,7 @@ namespace Matinfo.Metier
 
         public bool Read()
         {
+            int ancienID = this.IdMateriel;
             DataAccess accesBD = new DataAccess();
             String requete = string.Format("select idmateriel from materiel where codebarre = '{0}'", this.CodeBarre);
             DataTable datas = accesBD.GetData(requete);
@@ -190,7 +191,10 @@ namespace Matinfo.Metier
                 if(datas.Rows.Count > 0)
                 {
                     this.IdMateriel = int.Parse(datas.Rows[0]["idmateriel"].ToString());
-                    return true;
+                    if(ancienID != this.IdMateriel)
+                    {
+                        return true;
+                    }
                 }
             }
             return false;

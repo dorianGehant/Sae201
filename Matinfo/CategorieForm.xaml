@@ -5,23 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Matinfo"
         mc:Ignorable="d"
-        Title="Formulaire categorie" Height="217" Width="181"
+        Title="Formulaire categorie" Height="217" Width="227"
         WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <ControlTemplate x:Key="nomCatError">
+            <StackPanel>
+                <Border BorderBrush="Red" BorderThickness="1">
+                    <AdornedElementPlaceholder x:Name="element"/>
+                </Border>
+                <TextBlock x:Name="tbError" Foreground="red" Margin="5, 0, 0, 0" FontSize="12pt"
+                           Text="{Binding ElementName =element, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"/>
+            </StackPanel>
+        </ControlTemplate>
+    </Window.Resources>
+
     <Grid>
         <Label Content="Nom de la categorie :" HorizontalAlignment="Left" Margin="19,36,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbNomCat" HorizontalAlignment="Left" Height="18" Margin="22,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"
-                 Text="{Binding Nom, UpdateSourceTrigger=Explicit}"/>
+        <TextBox x:Name="tbNomCat" HorizontalAlignment="Center" Height="18" Margin="0,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177"
+                 Validation.ErrorTemplate="{StaticResource nomCatError}">
+            <TextBox.Text>
+                <Binding Path="Nom" UpdateSourceTrigger="Explicit">
+                    <Binding.ValidationRules>
+                        <local:VerifNomCategorie/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <Button x:Name="btnConfirmation"
-            Width="63"
+            Width="83"
             Height="28"
-            Margin="10,125,0,0"
+            Margin="25,120,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Confirmer" Click="Button_Click_Ajouter" />
+            Content="Confirmer" Click="Button_Click_Ajouter" RenderTransformOrigin="0.707,0.514" />
         <Button x:Name="btnCancel"
-            Width="52"
-            Height="29"
-            Margin="106,124,0,0"
+            Width="75"
+            Height="28"
+            Margin="127,120,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Annuler" Click="Button_Click_Annuler"/>

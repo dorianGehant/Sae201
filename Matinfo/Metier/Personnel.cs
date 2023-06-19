@@ -114,7 +114,7 @@ namespace Matinfo.Metier
         public void Delete()
         {
             DataAccess accessDB = new DataAccess();
-            string requete = "DELETE FROM personnel WHERE \"idpersonnel\"=" + this.IdPersonnel;
+            string requete = string.Format("DELETE FROM personnel WHERE idpersonnel = {0}", this.IdPersonnel);
             accessDB.SetData(requete);
         }
 
@@ -154,6 +154,7 @@ namespace Matinfo.Metier
 
         public bool Read()
         {
+            int ancienID = this.IdPersonnel;
             DataAccess accesBD = new DataAccess();
             String requete = string.Format("select idpersonnel from personnel where emailpersonnel = '{0}'", this.Email);
             DataTable datas = accesBD.GetData(requete);
@@ -162,7 +163,10 @@ namespace Matinfo.Metier
                 if (datas.Rows.Count > 0)
                 {
                     this.IdPersonnel = int.Parse(datas.Rows[0]["idpersonnel"].ToString());
-                    return true;
+                    if(ancienID != this.IdPersonnel)
+                    {
+                        return true;
+                    }
                 }
             }
             return false;

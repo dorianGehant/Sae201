@@ -7,8 +7,21 @@
         mc:Ignorable="d"
         Title="Formulaire création materiel"
         Width="285"
-        Height="340"
+        Height="387"
         WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <ControlTemplate x:Key="codeBarreError">
+            <StackPanel>
+                <Border BorderBrush="Red" BorderThickness="1">
+                    <AdornedElementPlaceholder x:Name="element"/>
+                </Border>
+                <TextBlock x:Name="tbError" Foreground="red" Margin="5, 0, 0, 0" FontSize="12pt"
+                           Text="{Binding ElementName =element, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"/>
+            </StackPanel>
+        </ControlTemplate>
+    </Window.Resources>
+
     <Grid>
         <Label
             Margin="24,72,0,0"
@@ -24,27 +37,30 @@
             TextWrapping="Wrap" 
             Text="{Binding Path=Nom, UpdateSourceTrigger=Explicit}"/>
         <Label
-            Margin="24,131,0,0"
+            Margin="24,194,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Code Barre :"
             RenderTransformOrigin="0.553,-0.037" />
-        <TextBox x:Name="tbCodeBarre"
-            Width="232"
-            Margin="0,157,0,0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap" 
-            Text="{Binding Path=CodeBarre, UpdateSourceTrigger=Explicit}" />
+        <TextBox x:Name="tbCodeBarre" HorizontalAlignment="Center" Height="18" Margin="0,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"
+                 Validation.ErrorTemplate="{StaticResource codeBarreError}">
+            <TextBox.Text>
+                <Binding Path="CodeBarre" UpdateSourceTrigger="Explicit">
+                    <Binding.ValidationRules>
+                        <local:VerifCodeBarre/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <Label
-            Margin="24,185,0,0"
+            Margin="24,132,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Reference constructeur :"
             RenderTransformOrigin="0.553,-0.037" />
         <TextBox x:Name="tbRefConstructeur"
             Width="232"
-            Margin="0,211,0,0"
+            Margin="0,158,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             TextWrapping="Wrap" 
@@ -52,14 +68,14 @@
         <Button x:Name="btnConfirmer"
             Width="63"
             Height="26"
-            Margin="45,255,0,0"
+            Margin="45,281,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Ajouter" Click="Button_Click_Ajouter"  />
         <Button x:Name="btnAnnuler"
             Width="53"
             Height="27"
-            Margin="176,254,0,0"
+            Margin="176,280,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Annuler" Click="Button_Click_Annuler"/>

@@ -40,27 +40,42 @@ namespace Matinfo
         private void Button_Click_Ajouter(object sender, RoutedEventArgs e)
         {
             Materiel materielActuel = new Materiel(materiel.IdMateriel, int.Parse(tbCategorieMateriel.Text), tbCodeBarre.Text, tbNomMateriel.Text, tbRefConstructeur.Text);
-            /// si le matériel a bien été créé dans la base, on l'ajoute dans l'application
-            if (materielActuel.Create())
+
+            tbCategorieMateriel.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            tbNomMateriel.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            tbCodeBarre.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            tbRefConstructeur.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
+            if (Validation.GetHasError((DependencyObject)tbCodeBarre))
             {
-                tbCategorieMateriel.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                tbNomMateriel.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                tbCodeBarre.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                tbRefConstructeur.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                MessageBox.Show(this.Owner, "Saisie du code barre invalide", "problème code barre", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (materielActuel.Create())
+            { 
                 DialogResult = true;
             }
+            this.materiel.Read();
         }
 
         private void Button_Click_Modifier(object sender, RoutedEventArgs e)
         {
             Materiel materielActuel = new Materiel(materiel.IdMateriel, int.Parse(tbCategorieMateriel.Text), tbCodeBarre.Text, tbNomMateriel.Text, tbRefConstructeur.Text);
-            /// si le matériel a bien été mis à jour, on le met à jour dans l'application
+
+            tbCategorieMateriel.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            tbNomMateriel.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            tbCodeBarre.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            tbRefConstructeur.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
+            if (Validation.GetHasError((DependencyObject)tbCodeBarre))
+            {
+                MessageBox.Show(this.Owner, "Saisie du code barre invalide", "problème code barre", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             if (materielActuel.Update())
             {
-                tbCategorieMateriel.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                tbNomMateriel.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                tbCodeBarre.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                tbRefConstructeur.GetBindingExpression(TextBox.TextProperty).UpdateSource();
                 DialogResult = true;
             }
         }

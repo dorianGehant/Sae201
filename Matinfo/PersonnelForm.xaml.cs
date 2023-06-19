@@ -39,27 +39,41 @@ namespace Matinfo
 
         private void Button_Click_Ajouter(object sender, RoutedEventArgs e)
         {
-            Personnel personnelActuel = new Personnel(personnel.IdPersonnel, tbNom.Text, tbPrenom.Text, tbEmail.Text);
-            /// si le personnel a bien été créé dans la base, on l'ajoute dans l'application
+            Personnel personnelActuel = new Personnel(personnel.IdPersonnel, tbEmail.Text, tbPrenom.Text, tbNom.Text);
+            tbNom.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            tbPrenom.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            tbEmail.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
+            if (Validation.GetHasError((DependencyObject)tbEmail))
+            {
+                MessageBox.Show(this.Owner, "Saisie de l'email invalide", "problème email", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             if (personnelActuel.Create())
             {
-                tbNom.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                tbPrenom.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                tbEmail.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-               
                 DialogResult = true;
             }
+            this.personnel.Read();
         }
 
         private void Button_Click_Modifier(object sender, RoutedEventArgs e)
         {
-            Personnel personnelActuel = new Personnel(personnel.IdPersonnel, tbNom.Text, tbPrenom.Text, tbEmail.Text);
+            Personnel personnelActuel = new Personnel(personnel.IdPersonnel, tbEmail.Text, tbPrenom.Text, tbNom.Text);
             /// si le personnel a bien été mis à jour, on le met à jour dans l'application
+
+            tbNom.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            tbPrenom.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            tbEmail.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
+            if (Validation.GetHasError((DependencyObject)tbEmail))
+            {
+                MessageBox.Show(this.Owner, "Saisie de l'email invalide", "problème email", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             if (personnelActuel.Update())
             {
-                tbNom.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                tbPrenom.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                tbEmail.GetBindingExpression(TextBox.TextProperty).UpdateSource();
                 DialogResult = true;
             }
         }

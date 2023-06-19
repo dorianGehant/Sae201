@@ -45,21 +45,31 @@ namespace Matinfo
         private void Button_Click_Ajouter(object sender, RoutedEventArgs e)
         {
             CategorieMateriel categorieActuelle = new CategorieMateriel(categorie.IdCategorie, tbNomCat.Text);
-            /// si le matériel a bien été créé dans la base, on l'ajoute dans l'application
+            tbNomCat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
+            if (Validation.GetHasError((DependencyObject)tbNomCat))
+            {
+                MessageBox.Show(this.Owner, "Saisie du nom de catégorie invalide", "problème nom catégorie", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             if (categorieActuelle.Create())
             {
-                tbNomCat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
                 DialogResult = true;
             }
+            this.categorie.Read();
         }
 
         private void Button_Click_Modifier(object sender, RoutedEventArgs e)
         {
             CategorieMateriel categorieActuelle = new CategorieMateriel(categorie.IdCategorie, tbNomCat.Text);
-            /// si le matériel a bien été créé dans la base, on l'ajoute dans l'application
+            tbNomCat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            if (Validation.GetHasError((DependencyObject)tbNomCat))
+            {
+                MessageBox.Show(this.Owner, "Saisie du nom de catégorie invalide", "problème nom catégorie", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             if (categorieActuelle.Update())
             {
-                tbNomCat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
                 DialogResult = true;
             }
         }
