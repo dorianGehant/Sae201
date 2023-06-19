@@ -44,7 +44,12 @@ namespace Matinfo
                 btnConfirmation.Click += Button_Click_Modifier;
             }
         }
-
+        /// <summary>
+        /// Teste la vérification et la valide ou non, créer ensuite
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <returns>Faux si il y a déjà existence</returns>
         private void Button_Click_Ajouter(object sender, RoutedEventArgs e)
         {
             CategorieMateriel categorieActuelle = new CategorieMateriel(categorie.IdCategorie, tbNomCat.Text);
@@ -61,7 +66,12 @@ namespace Matinfo
             }
             this.categorie.Read();
         }
-
+        /// <summary>
+        /// Teste la vérification et la valide ou non, modifie ensuite
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <returns>Faux si il y a déjà existence</returns>
         private void Button_Click_Modifier(object sender, RoutedEventArgs e)
         {
             CategorieMateriel categorieActuelle = new CategorieMateriel(categorie.IdCategorie, tbNomCat.Text);
