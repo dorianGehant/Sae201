@@ -9,6 +9,13 @@ using System.Windows;
 
 namespace Matinfo.Metier
 {
+    /// <summary>
+    /// Stocke 4 informations :
+    /// 1 chaine : le commentaire
+    /// 2 entier : l'idPersonnel, l'IdMateriel
+    /// 1 DateTime : la date d'attribution
+    /// </summary>
+
     public class Attribution : Crud<Attribution>
     {
         private int idPersonnel;
@@ -30,9 +37,13 @@ namespace Matinfo.Metier
             this.idPersonnel = idPersonnel;
             this.idMateriel = idMateriel;
         }
-
+        /// <summary>
+        /// Obtient ou définit le commentaire de l'attribution 
+        /// </summary>
         public string Commentaire
         {
+           
+
             get
             {
                 return this.commentaire;
@@ -43,9 +54,12 @@ namespace Matinfo.Metier
                 this.commentaire = value;
             }
         }
-
+        /// <summary>
+        /// Obtient ou définit la date de l'attribution 
+        /// </summary>
         public DateTime DateAttribution
         {
+            
             get
             {
                 return this.dateAttribution;
@@ -56,9 +70,12 @@ namespace Matinfo.Metier
                 this.dateAttribution = value;
             }
         }
-
+        /// <summary>
+        /// Obtient ou définit l'ID du personnel
+        /// </summary>
         public int IdPersonnel
         {
+            
             get
             {
                 return this.idPersonnel;
@@ -69,9 +86,12 @@ namespace Matinfo.Metier
                 this.idPersonnel = value;
             }
         }
-
+        /// <summary>
+        /// Obtient ou définit l'ID du materiel
+        /// </summary>
         public int IdMateriel
         {
+        
             get
             {
                 return this.idMateriel;
@@ -82,9 +102,12 @@ namespace Matinfo.Metier
                 this.idMateriel = value;
             }
         }
-
+        /// <summary>
+        /// Obtient un personnel
+        /// </summary>
         public Personnel UnPersonnel
         {
+          
             get
             {
                 return this.unPersonnel;
@@ -95,9 +118,12 @@ namespace Matinfo.Metier
                 this.unPersonnel = value;
             }
         }
-
+        /// <summary>
+        /// Obtient un materiel
+        /// </summary>
         public Materiel UnMateriel
         {
+           
             get
             {
                 return this.unMateriel;
@@ -108,25 +134,37 @@ namespace Matinfo.Metier
                 this.unMateriel = value;
             }
         }
-
+        /// <summary>
+        ///Creation de l'attribution
+        /// </summary>
+        /// <returns>Un vrai si la création à bien marché</returns>
         public bool Create()
         {
-            ///creation du materiel
+         
+
             DataAccess accessDB = new DataAccess();
             string requete = string.Format("INSERT INTO attributions(idpersonnel, idmateriel, dateattribution, commentaireattribution) VALUES({0}, {1}, '{2}', '{3}')", +this.IdPersonnel, this.IdMateriel, this.DateAttribution.ToString("dd/MM/yyyy"), this.Commentaire);
             accessDB.SetData(requete);
             return true;
         }
-
+        /// <summary>
+        ///Suppréssion de l'attribution
+        /// </summary>
         public void Delete()
         {
+            
+            
             DataAccess accessDB = new DataAccess();
             string requete = "DELETE FROM attributions WHERE (\"idpersonnel\"=" + this.IdPersonnel + " AND \"idmateriel\"=" + this.IdMateriel + " AND \"dateattribution\"=" + this.DateAttribution + ")";
             accessDB.SetData(requete);
         }
-
+        /// <summary>
+        ///Cherche tous les attributions dans la base de données
+        /// </summary>
+        /// <returns>Toutes les attributions</returns>
         public ObservableCollection<Attribution> FindAll()
         {
+          
             ObservableCollection<Attribution> LesAttributions = new ObservableCollection<Attribution>();
             DataAccess accesBD = new DataAccess();
             String requete = "select idpersonnel, idmateriel, dateattribution, commentaireattribution from attributions";
@@ -141,9 +179,13 @@ namespace Matinfo.Metier
             }
             return LesAttributions;
         }
-
+        /// <summary>
+        ///Cherche l'attributions selectionné dans la base de données
+        /// </summary>
+        /// <returns>Toutes les attributions selectionnées</returns>
         public ObservableCollection<Attribution> FindBySelection(string criteres)
         {
+            
             ObservableCollection<Attribution> LesAttributions = new ObservableCollection<Attribution>();
             DataAccess accesBD = new DataAccess();
             String requete = "select idpersonnel, idmateriel, dateattribution, commentaireattribution from attributions " + criteres;
@@ -158,9 +200,13 @@ namespace Matinfo.Metier
             }
             return LesAttributions;
         }
-
+        /// <summary>
+        ///Cherche si il n'existe pas déjà une attribiton existante avec un materiel ou un personnel
+        /// </summary>
+        /// <returns>Vrai s'il existe ou faux s'il n'existe pas</returns>
         public bool Read()
         {
+            
             DataAccess accesBD = new DataAccess();
             String requete = string.Format("select * from attributions WHERE (idpersonnel = {0} AND idmateriel = {1} AND dateattribution = '{2}')", this.idPersonnel, this.IdMateriel, this.DateAttribution.ToString("dd/MM/yyyy"));
             DataTable datas = accesBD.GetData(requete);
@@ -173,9 +219,13 @@ namespace Matinfo.Metier
             }
             return false;
         }
-
+        /// <summary>
+        ///Modifie une attribution existante
+        /// </summary>
+        /// <returns>Vrai s'il y a bien eu modification</returns>
         public bool Update()
         {
+           
             DataAccess accesBD = new DataAccess();
             String requete = string.Format("update attributions SET dateattribution = '{0}', commentaireattribution = '{1}' WHERE (idpersonnel= {2} AND idmateriel= {3} AND dateattribution= {4}", this.DateAttribution.ToString("dd/MM/yyyy"), this.Commentaire, this.IdPersonnel, this.IdMateriel, this.DateAttribution);
             accesBD.SetData(requete);

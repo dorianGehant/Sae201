@@ -11,6 +11,11 @@ namespace Matinfo.Metier
 {
     public class Materiel : Crud<Materiel>
     {
+        /// <summary>
+        /// Stocke 6 informations :
+        /// 3 chaine : le nom, le codebarre, la réference constructeur
+        /// 2 entier : l'id de la catégorie et l'id du matériel
+        /// </summary>
         private int idMateriel;
         private int idCategorie;        
         private string nom;
@@ -35,6 +40,9 @@ namespace Matinfo.Metier
 
         public string CodeBarre
         {
+            /// <summary>
+            /// Obtient ou définit le code barre
+            /// </summary>
             get
             {
                 return this.codeBarre;
@@ -48,6 +56,9 @@ namespace Matinfo.Metier
 
         public string Nom
         {
+            /// <summary>
+            /// Obtient ou définit le nom
+            /// </summary>
             get
             {
                 return this.nom;
@@ -61,6 +72,9 @@ namespace Matinfo.Metier
 
         public string ReferenceConstructeur
         {
+            /// <summary>
+            /// Obtient ou définit la référence constructeur
+            /// </summary>
             get
             {
                 return this.referenceConstructeur;
@@ -74,6 +88,9 @@ namespace Matinfo.Metier
 
         public int IdMateriel
         {
+            /// <summary>
+            /// Obtient ou définit l'id du matériel
+            /// </summary>
             get
             {
                 return this.idMateriel;
@@ -87,6 +104,10 @@ namespace Matinfo.Metier
 
         public int IdCategorie
         {
+
+            /// <summary>
+            /// Obtient ou définit l'id de la catégorie
+            /// </summary>
             get
             {
                 return this.idCategorie;
@@ -100,6 +121,10 @@ namespace Matinfo.Metier
 
         public CategorieMateriel UneCategorie
         {
+            /// <summary>
+            /// Obtient ou définit la catégorie du matériel
+            /// </summary>
+
             get
             {
                 return this.uneCategorie;
@@ -111,8 +136,11 @@ namespace Matinfo.Metier
             }
         }
 
-        internal ObservableCollection<Attribution> LesAttributions
+        public ObservableCollection<Attribution> LesAttributions
         {
+            /// <summary>
+            /// Obtient la base de données des atttributions
+            /// </summary>
             get
             {
                 return this.lesAttributions;
@@ -126,6 +154,13 @@ namespace Matinfo.Metier
 
         public bool Create()
         {
+            /// <summary>
+            ///Creation de la catégorie du matériel
+            /// </summary>
+            /// <returns>Un vrai si la création à bien marché ou un faux si cela n'a pas marché</returns>
+
+
+
             ///verification que le codebarre n'existe pas déjà
             if (this.Read())
             {
