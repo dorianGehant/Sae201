@@ -11,6 +11,12 @@ namespace Matinfo.Metier
 {
     public class CategorieMateriel : Crud<CategorieMateriel>
     {
+        /// <summary>
+        /// Stocke 2 informations :
+        /// 1 chaine : le nom
+        /// 1 entier : l'id de la catégorie
+        /// </summary>
+
         private int idCategorie;
         private string nom;
         private ObservableCollection<Materiel> lesMateriaux;
@@ -28,6 +34,9 @@ namespace Matinfo.Metier
 
         public string Nom
         {
+            /// <summary>
+            /// Obtient ou définit le nom de la categorie 
+            /// </summary>
             get
             {
                 return this.nom;
@@ -41,6 +50,9 @@ namespace Matinfo.Metier
 
         public int IdCategorie
         {
+            /// <summary>
+            /// Obtient ou définit l'id de la categorie 
+            /// </summary>
             get
             {
                 return this.idCategorie;
@@ -54,6 +66,9 @@ namespace Matinfo.Metier
 
         public ObservableCollection<Materiel> LesMateriaux
         {
+            /// <summary>
+            /// Obtient la base de données des matériaux
+            /// </summary>
             get
             {
                 return this.lesMateriaux;
@@ -67,13 +82,18 @@ namespace Matinfo.Metier
 
         public bool Create()
         {
-            ///verification que le codebarre n'existe pas déjà
+            /// <summary>
+            ///Creation de la catégorie du matériel
+            /// </summary>
+            /// <returns>Un vrai si la création à bien marché ou un faux si cela n'a pas marché</returns>
+       
+         
             if (this.Read())
             {
                 MessageBox.Show("Erreur lors de la création de la catégorie, il existe déjà une catégorie avec ce nom", "Problème lors de la création", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            ///creation du materiel
+            ///creation de la catégorie du matériel
             DataAccess accessDB = new DataAccess();
             string requete = string.Format("INSERT INTO categorie_materiel(nomcategorie) VALUES('{0}')", this.Nom);
             accessDB.SetData(requete);
@@ -82,6 +102,11 @@ namespace Matinfo.Metier
 
         public void Delete()
         {
+
+            /// <summary>
+            ///Suppréssion de la catégorie du matériel
+            /// </summary>
+
             DataAccess accessDB = new DataAccess();
             string requete = "DELETE FROM categorie_materiel WHERE \"idcategorie\"=" + this.IdCategorie;
             accessDB.SetData(requete);
@@ -89,6 +114,11 @@ namespace Matinfo.Metier
 
         public ObservableCollection<CategorieMateriel> FindAll()
         {
+            /// <summary>
+            ///Cherche toutes les catégories de matériaux dans la base de données
+            /// </summary>
+            ///<returns>Toutes les catégories de matériaux</returns>
+
             ObservableCollection<CategorieMateriel> LesCategories = new ObservableCollection<CategorieMateriel>();
             DataAccess accesBD = new DataAccess();
             String requete = "select idcategorie, nomcategorie from categorie_materiel ;";
@@ -106,6 +136,10 @@ namespace Matinfo.Metier
 
         public ObservableCollection<CategorieMateriel> FindBySelection(string criteres)
         {
+            /// <summary>
+            ///Cherche la catégorie de matériel selectionné dans la base de données
+            /// </summary>
+            ///<returns>Toutes les catégories de matériaux< selectionnées</returns>
             ObservableCollection<CategorieMateriel> LesCategories = new ObservableCollection<CategorieMateriel>();
             DataAccess accesBD = new DataAccess();
             String requete = "select idcategorie, nomcategorie, nompersonnel, prenompersonnel from categorie_materiel " + criteres;
@@ -123,6 +157,10 @@ namespace Matinfo.Metier
 
         public bool Read()
         {
+            /// <summary>
+            ///Cherche si il n'existe pas déjà une catégorie de matériel existante avec le nom de la catégorie
+            /// </summary>
+            ///<returns>Vrai s'il existe ou faux s'il n'existe pas</returns>
             int ancienID = this.IdCategorie;
             DataAccess accesBD = new DataAccess();
             String requete = string.Format("select idcategorie from categorie_materiel where nomcategorie = '{0}'", this.Nom);
@@ -143,6 +181,10 @@ namespace Matinfo.Metier
 
         public bool Update()
         {
+            /// <summary>
+            ///Modifie une catégorie de matériel existante
+            /// </summary>
+            ///<returns>Vrai s'il y a bien eu modification ou faux si cela n'a pas été modifié</returns>
             int idCategorieModifie = this.IdCategorie;
             /// verification que les nouvelles valeurs respectent l'unicité
             if (this.Read())

@@ -6,7 +6,16 @@ namespace Matinfo.Metier
 {
     public interface Crud<T>
    {
-      bool Create();
+        /// <summary>
+        /// Interfaces pour les méthodes 
+        /// de création
+        /// de verification et voir
+        /// de modification
+        /// de suppréssion
+        /// de recherches
+        /// de recherches par sélection
+        /// </summary>
+        bool Create();
       
       bool Read();
       

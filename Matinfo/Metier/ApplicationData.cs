@@ -10,8 +10,13 @@ using System.Windows.Media.Media3D;
 
 namespace Matinfo.Metier
 {
+    /// <summary>
+    /// Stocke 4 informations :
+    /// 4 ObservableCollection : les materiaux, les personnels, les categories, les attributions
+    /// </summary>
     public class ApplicationData
     {
+        
         private ObservableCollection<Materiel> lesMateriaux;
         private ObservableCollection<Personnel> lesPersonnels;
         private ObservableCollection<CategorieMateriel> lesCategories;
@@ -35,9 +40,12 @@ namespace Matinfo.Metier
             RefreshAssociationsMateriaux();
             RefreshAssociationsPersonnel();
         }
-
+        /// <summary>
+        /// Obtient ou définit les materiaux
+        /// </summary>
         public ObservableCollection<Materiel> LesMateriaux
         {
+           
             get
             {
                 return this.lesMateriaux;
@@ -48,9 +56,12 @@ namespace Matinfo.Metier
                 this.lesMateriaux = value;
             }
         }
-
+        /// <summary>
+        /// Obtient ou définit les personnels
+        /// </summary>
         public ObservableCollection<Personnel> LesPersonnels
         {
+           
             get
             {
                 return this.lesPersonnels;
@@ -61,9 +72,12 @@ namespace Matinfo.Metier
                 this.lesPersonnels = value;
             }
         }
-
+        /// <summary>
+        /// Obtient ou définit les catégories
+        /// </summary>
         public ObservableCollection<CategorieMateriel> LesCategories
         {
+           
             get
             {
                 return this.lesCategories;
@@ -74,9 +88,12 @@ namespace Matinfo.Metier
                 this.lesCategories = value;
             }
         }
-
+        /// <summary>
+        /// Obtient ou définit les attributions
+        /// </summary>
         public ObservableCollection<Attribution> LesAttributions
         {
+            
             get
             {
                 return this.lesAttributions;
@@ -88,9 +105,13 @@ namespace Matinfo.Metier
             }
         }
 
-
+        /// <summary>
+        /// Rafraichit les materiaux et ses assossiations
+        /// </summary>
         public void RefreshAssociationsMateriaux()
         {
+            
+
             /// Liste des attributions pour chaque materiel ///
             foreach (Materiel unMateriel in LesMateriaux.ToList())
             {
@@ -118,8 +139,13 @@ namespace Matinfo.Metier
                 LesMateriaux.ToList().FindAll(e => e.IdCategorie == categorie.IdCategorie));
             }
         }
+        /// <summary>
+        /// Rafraichit les personnels et ses assossiations
+        /// </summary>
         public void RefreshAssociationsPersonnel()
         {
+            
+            
             /// Liste des attributions pour chaque personnels ///
             foreach (Personnel unPerso in LesPersonnels.ToList())
             {
