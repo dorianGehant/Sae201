@@ -4,17 +4,18 @@ using System.Collections.ObjectModel;
 
 namespace Matinfo.Metier
 {
+    /// <summary>
+    /// Interfaces pour les méthodes 
+    /// de création
+    /// de verification et voir
+    /// de modification
+    /// de suppréssion
+    /// de recherches
+    /// de recherches par sélection
+    /// </summary>
     public interface Crud<T>
    {
-        /// <summary>
-        /// Interfaces pour les méthodes 
-        /// de création
-        /// de verification et voir
-        /// de modification
-        /// de suppréssion
-        /// de recherches
-        /// de recherches par sélection
-        /// </summary>
+       
         bool Create();
       
       bool Read();
