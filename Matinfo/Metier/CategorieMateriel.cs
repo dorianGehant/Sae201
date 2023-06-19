@@ -115,7 +115,7 @@ namespace Matinfo.Metier
         /// <summary>
         ///Cherche toutes les catégories de matériaux dans la base de données
         /// </summary>
-        ///<returns>Toutes les catégories de matériaux</returns>
+        /// <returns>Toutes les catégories de matériaux</returns>
         public ObservableCollection<CategorieMateriel> FindAll()
         {
            

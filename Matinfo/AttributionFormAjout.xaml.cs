@@ -23,8 +23,13 @@ namespace Matinfo
     {
         public Attribution attribution { get; set; }
 
+
+        /// <summary>
+        /// Ajoute une attribution avec le formulaire
+        /// </summary>
         public AttributionFormAjout(Attribution attribution, ApplicationData applicationData)
         {
+
             InitializeComponent();
             this.attribution = attribution;
             this.DataContext = attribution;
@@ -34,7 +39,12 @@ namespace Matinfo
             cbMateriel.DisplayMemberPath = "Nom";
             cbPersonnel.DisplayMemberPath = "Nom";
         }
-
+        /// <summary>
+        /// Teste la vérification et la valide ou non
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <re
         private void Button_Click_Ajouter(object sender, RoutedEventArgs e)
         {
             Attribution attributionActuelle = new Attribution(((Personnel)cbPersonnel.SelectedItem).IdPersonnel, ((Materiel)cbMateriel.SelectedItem).IdMateriel, tbCommentaire.Text, (DateTime)dpDate.SelectedDate);
