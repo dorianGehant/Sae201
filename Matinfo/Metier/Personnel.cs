@@ -9,6 +9,11 @@ using System.Windows;
 
 namespace Matinfo.Metier
 {
+    /// <summary>
+    /// Stocke 5 informations :
+    /// 3 chaines : l'email, le nom, le prenom
+    /// 1 entier : l'idpersonnel
+    /// </summary>
     public class Personnel : Crud<Personnel>
     {
         private int idPersonnel;
@@ -30,7 +35,9 @@ namespace Matinfo.Metier
             this.Nom = nom;
             this.Prenom = prenom;
         }
-
+        /// <summary>
+        /// Obtient ou définit l'email
+        /// </summary>
         public string Email
         {
             get
@@ -43,7 +50,9 @@ namespace Matinfo.Metier
                 this.email = value;
             }
         }
-
+        /// <summary>
+        /// Obtient ou définit le nom
+        /// </summary>
         public string Nom
         {
             get
@@ -56,7 +65,9 @@ namespace Matinfo.Metier
                 this.nom = value;
             }
         }
-
+        /// <summary>
+        /// Obtient ou définit le prénom
+        /// </summary>
         public string Prenom
         {
             get
@@ -69,7 +80,9 @@ namespace Matinfo.Metier
                 this.prenom = value;
             }
         }
-
+        /// <summary>
+        /// Obtient ou définit l'idpersonnel
+        /// </summary>
         public int IdPersonnel
         {
             get
@@ -82,7 +95,9 @@ namespace Matinfo.Metier
                 this.idPersonnel = value;
             }
         }
-
+        /// <summary>
+        /// Obtient la base de données des atttributions
+        /// </summary>
         public ObservableCollection<Attribution> LesAttributions
         {
             get
@@ -96,6 +111,11 @@ namespace Matinfo.Metier
             }
         }
 
+
+        /// <summary>
+        ///Creation d'un personnel
+        /// </summary>
+        /// <returns>Un vrai si la création à bien marché ou un faux si cela n'a pas marché</returns
         public bool Create()
         {
             ///verification que le personnel n'existe pas déjà
@@ -110,14 +130,19 @@ namespace Matinfo.Metier
             accessDB.SetData(requete);
             return true;
         }
-
+        /// <summary>
+        ///Suppréssion d'un personnel
+        /// </summary>
         public void Delete()
         {
             DataAccess accessDB = new DataAccess();
             string requete = string.Format("DELETE FROM personnel WHERE idpersonnel = {0}", this.IdPersonnel);
             accessDB.SetData(requete);
         }
-
+        /// <summary>
+        ///Cherche tous les personnels dans la base de données
+        /// </summary>
+        /// <returns>Toutes les personnels</returns>
         public ObservableCollection<Personnel> FindAll()
         {
             ObservableCollection<Personnel> LesPersonnels = new ObservableCollection<Personnel>();
@@ -134,7 +159,10 @@ namespace Matinfo.Metier
             }
             return LesPersonnels;
         }
-
+        /// <summary>
+        ///Cherche le personnel selectionné dans la base de données
+        /// </summary>
+        /// <returns>Toutes les personnels selectionnées</returns>
         public ObservableCollection<Personnel> FindBySelection(string criteres)
         {
             ObservableCollection<Personnel> LesPersonnels = new ObservableCollection<Personnel>();
@@ -151,7 +179,10 @@ namespace Matinfo.Metier
             }
             return LesPersonnels;
         }
-
+        /// <summary>
+        ///Cherche si il n'existe pas déjà un personnel existant avec l'émail
+        /// </summary>
+        /// <returns>Vrai s'il existe ou faux s'il n'existe pas</returns>
         public bool Read()
         {
             int ancienID = this.IdPersonnel;
@@ -171,7 +202,10 @@ namespace Matinfo.Metier
             }
             return false;
         }
-
+        /// <summary>
+        ///Modifie un personnel existant
+        /// </summary>
+        /// <returns>Vrai s'il y a bien eu modification</returns>
         public bool Update()
         {
             int idPersonnelModifie = this.IdPersonnel;
