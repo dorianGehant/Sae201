@@ -135,7 +135,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        ///Creation de l'attribution
+        /// Creation de l'attribution
         /// </summary>
         /// <returns>Un vrai si la création à bien marché</returns>
         public bool Create()
@@ -148,7 +148,7 @@ namespace Matinfo.Metier
             return true;
         }
         /// <summary>
-        ///Suppréssion de l'attribution
+        /// Suppression de l'attribution
         /// </summary>
         public void Delete()
         {
@@ -157,7 +157,7 @@ namespace Matinfo.Metier
             accessDB.SetData(requete);
         }
         /// <summary>
-        ///Cherche tous les attributions dans la base de données
+        /// Cherche tous les attributions dans la base de données
         /// </summary>
         /// <returns>Toutes les attributions</returns>
         public ObservableCollection<Attribution> FindAll()
@@ -178,7 +178,7 @@ namespace Matinfo.Metier
             return LesAttributions;
         }
         /// <summary>
-        ///Cherche l'attributions selectionné dans la base de données
+        /// Cherche l'attributions selectionné dans la base de données
         /// </summary>
         /// <returns>Toutes les attributions selectionnées</returns>
         public ObservableCollection<Attribution> FindBySelection(string criteres)
@@ -199,7 +199,7 @@ namespace Matinfo.Metier
             return LesAttributions;
         }
         /// <summary>
-        ///Cherche si il n'existe pas déjà une attribiton existante avec un materiel ou un personnel
+        /// Cherche si il n'existe pas déjà une attribiton existante avec un materiel ou un personnel
         /// </summary>
         /// <returns>Vrai s'il existe ou faux s'il n'existe pas</returns>
         public bool Read()
@@ -218,7 +218,7 @@ namespace Matinfo.Metier
             return false;
         }
         /// <summary>
-        ///Modifie une attribution existante
+        /// Modifie une attribution existante
         /// </summary>
         /// <returns>Vrai s'il y a bien eu modification</returns>
         public bool Update()

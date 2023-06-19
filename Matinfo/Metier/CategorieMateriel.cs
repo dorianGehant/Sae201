@@ -82,7 +82,7 @@ namespace Matinfo.Metier
         }
 
         /// <summary>
-        ///Creation de la catégorie du matériel
+        /// Creation de la catégorie du matériel
         /// </summary>
         /// <returns>Un vrai si la création à bien marché ou un faux si cela n'a pas marché</returns>
         public bool Create()
@@ -101,7 +101,7 @@ namespace Matinfo.Metier
             return true;
         }
         /// <summary>
-        ///Suppréssion de la catégorie du matériel
+        /// Suppréssion de la catégorie du matériel
         /// </summary>
         public void Delete()
         {
@@ -115,7 +115,7 @@ namespace Matinfo.Metier
         /// <summary>
         ///Cherche toutes les catégories de matériaux dans la base de données
         /// </summary>
-        ///<returns>Toutes les catégories de matériaux</returns>
+        /// <returns>Toutes les catégories de matériaux</returns>
         public ObservableCollection<CategorieMateriel> FindAll()
         {
            
@@ -138,7 +138,7 @@ namespace Matinfo.Metier
         /// <summary>
         ///Cherche la catégorie de matériel selectionné dans la base de données
         /// </summary>
-        ///<returns>Toutes les catégories de matériaux< selectionnées</returns>
+        /// <returns>Toutes les catégories de matériaux< selectionnées</returns>
         public ObservableCollection<CategorieMateriel> FindBySelection(string criteres)
         {
             ObservableCollection<CategorieMateriel> LesCategories = new ObservableCollection<CategorieMateriel>();
@@ -158,7 +158,7 @@ namespace Matinfo.Metier
         /// <summary>
         ///Cherche si il n'existe pas déjà une catégorie de matériel existante avec le nom de la catégorie
         /// </summary>
-        ///<returns>Vrai s'il existe ou faux s'il n'existe pas</returns>
+        /// <returns>Vrai s'il existe ou faux s'il n'existe pas</returns>
         public bool Read()
         {
             
@@ -182,7 +182,7 @@ namespace Matinfo.Metier
         /// <summary>
         ///Modifie une catégorie de matériel existante
         /// </summary>
-        ///<returns>Vrai s'il y a bien eu modification ou faux si cela n'a pas été modifié</returns>
+        /// <returns>Vrai s'il y a bien eu modification ou faux si cela n'a pas été modifié</returns>
         public bool Update()
         {
            

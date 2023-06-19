@@ -106,7 +106,7 @@ namespace Matinfo.Metier
         }
 
         /// <summary>
-        /// Rafraichit les materiaux et ses assossiations
+        /// Rafraichit les materiaux et ses associations
         /// </summary>
         public void RefreshAssociationsMateriaux()
         {
@@ -140,7 +140,7 @@ namespace Matinfo.Metier
             }
         }
         /// <summary>
-        /// Rafraichit les personnels et ses assossiations
+        /// Rafraichit les personnels et ses associations
         /// </summary>
         public void RefreshAssociationsPersonnel()
         {
