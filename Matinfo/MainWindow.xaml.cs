@@ -81,7 +81,7 @@ namespace Matinfo
         private void Button_Click_FormMateriel_Ajout(object sender, RoutedEventArgs e)
         {
             Materiel materielCree = new Materiel();
-            MaterielForm formMateriel = new MaterielForm(materielCree, false);
+            MaterielForm formMateriel = new MaterielForm(materielCree, false, this.applicationData);
             formMateriel.Owner = this;
             bool result = (bool)formMateriel.ShowDialog();
             if (result)
@@ -93,7 +93,7 @@ namespace Matinfo
 
         private void Button_Click_FormMateriel_Modif(object sender, RoutedEventArgs e)
         {
-            MaterielForm formMateriel = new MaterielForm((Materiel)lvMateriel.SelectedItem, true);
+            MaterielForm formMateriel = new MaterielForm((Materiel)lvMateriel.SelectedItem, true, this.applicationData);
             formMateriel.Owner = this;
             bool result = (bool)formMateriel.ShowDialog();
             if (result)

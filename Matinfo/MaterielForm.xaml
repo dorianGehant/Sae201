@@ -1,23 +1,28 @@
-﻿<Window x:Class="Matinfo.MaterielForm"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Matinfo"
-        mc:Ignorable="d"
-        Title="Formulaire création materiel"
-        Width="285"
-        Height="387"
-        WindowStartupLocation="CenterScreen">
+﻿<Window
+    x:Class="Matinfo.MaterielForm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Matinfo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Formulaire création materiel"
+    Width="285"
+    Height="387"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
 
     <Window.Resources>
         <ControlTemplate x:Key="codeBarreError">
             <StackPanel>
                 <Border BorderBrush="Red" BorderThickness="1">
-                    <AdornedElementPlaceholder x:Name="element"/>
+                    <AdornedElementPlaceholder x:Name="element" />
                 </Border>
-                <TextBlock x:Name="tbError" Foreground="red" Margin="5, 0, 0, 0" FontSize="12pt"
-                           Text="{Binding ElementName =element, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"/>
+                <TextBlock
+                    x:Name="tbError"
+                    Margin="5,0,0,0"
+                    FontSize="12pt"
+                    Foreground="red"
+                    Text="{Binding ElementName=element, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}" />
             </StackPanel>
         </ControlTemplate>
     </Window.Resources>
@@ -29,25 +34,33 @@
             VerticalAlignment="Top"
             Content="Nom :"
             RenderTransformOrigin="0.553,-0.037" />
-        <TextBox x:Name="tbNomMateriel"
+        <TextBox
+            x:Name="tbNomMateriel"
             Width="232"
             Margin="0,98,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            TextWrapping="Wrap" 
-            Text="{Binding Path=Nom, UpdateSourceTrigger=Explicit}"/>
+            Text="{Binding Path=Nom, UpdateSourceTrigger=Explicit}"
+            TextWrapping="Wrap" />
         <Label
             Margin="24,194,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Code Barre :"
             RenderTransformOrigin="0.553,-0.037" />
-        <TextBox x:Name="tbCodeBarre" HorizontalAlignment="Center" Height="18" Margin="0,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"
-                 Validation.ErrorTemplate="{StaticResource codeBarreError}">
+        <TextBox
+            x:Name="tbCodeBarre"
+            Width="232"
+            Height="18"
+            Margin="0,223,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            TextWrapping="Wrap"
+            Validation.ErrorTemplate="{StaticResource codeBarreError}">
             <TextBox.Text>
                 <Binding Path="CodeBarre" UpdateSourceTrigger="Explicit">
                     <Binding.ValidationRules>
-                        <local:VerifCodeBarre/>
+                        <local:VerifCodeBarre />
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -58,40 +71,47 @@
             VerticalAlignment="Top"
             Content="Reference constructeur :"
             RenderTransformOrigin="0.553,-0.037" />
-        <TextBox x:Name="tbRefConstructeur"
+        <TextBox
+            x:Name="tbRefConstructeur"
             Width="232"
             Margin="0,158,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            TextWrapping="Wrap" 
-            Text="{Binding Path=ReferenceConstructeur, UpdateSourceTrigger=Explicit}"/>
-        <Button x:Name="btnConfirmer"
+            Text="{Binding Path=ReferenceConstructeur, UpdateSourceTrigger=Explicit}"
+            TextWrapping="Wrap" />
+        <Button
+            x:Name="btnConfirmer"
             Width="63"
             Height="26"
             Margin="45,281,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Ajouter" Click="Button_Click_Ajouter"  />
-        <Button x:Name="btnAnnuler"
+            Click="Button_Click_Ajouter"
+            Content="Ajouter" />
+        <Button
+            x:Name="btnAnnuler"
             Width="53"
             Height="27"
             Margin="176,280,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Annuler" Click="Button_Click_Annuler"/>
+            Click="Button_Click_Annuler"
+            Content="Annuler" />
         <Label
             Margin="24,23,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Id de la categorie du materiel :"
+            Content="Choix de la categorie du materiel :"
             RenderTransformOrigin="0.553,-0.037" />
-        <TextBox x:Name="tbCategorieMateriel"
+        <ComboBox
+            x:Name="cbCatMateriel"
             Width="232"
             Margin="0,49,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            TextWrapping="Wrap" 
-            Text="{Binding Path=IdCategorie, UpdateSourceTrigger=Explicit}"/>
+            ItemsSource="{Binding}"
+            SelectedValue="{Binding Path=IdCategorie}"
+            SelectedValuePath="IdCategorie" />
 
     </Grid>
 </Window>

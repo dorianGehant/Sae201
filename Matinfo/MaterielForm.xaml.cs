@@ -22,12 +22,13 @@ namespace Matinfo
     {
         public Materiel materiel {  get; set; }
 
-        public MaterielForm(Materiel materiel, bool estFormModification)
+        public MaterielForm(Materiel materiel, bool estFormModification, ApplicationData applicationData)
         {
             InitializeComponent();
             this.DataContext = materiel;
             this.materiel = materiel;
-            this.materiel.IdCategorie = 1;
+            this.cbCatMateriel.ItemsSource = applicationData.LesCategories;
+            cbCatMateriel.DisplayMemberPath = "Nom";
             if (estFormModification)
             {
                 this.Title = "Formulaire modification materiel";
@@ -39,9 +40,9 @@ namespace Matinfo
 
         private void Button_Click_Ajouter(object sender, RoutedEventArgs e)
         {
-            Materiel materielActuel = new Materiel(materiel.IdMateriel, int.Parse(tbCategorieMateriel.Text), tbCodeBarre.Text, tbNomMateriel.Text, tbRefConstructeur.Text);
+            Materiel materielActuel = new Materiel(materiel.IdMateriel, ((CategorieMateriel)cbCatMateriel.SelectedItem).IdCategorie, tbCodeBarre.Text, tbNomMateriel.Text, tbRefConstructeur.Text);
 
-            tbCategorieMateriel.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            cbCatMateriel.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
             tbNomMateriel.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             tbCodeBarre.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             tbRefConstructeur.GetBindingExpression(TextBox.TextProperty).UpdateSource();
@@ -61,9 +62,9 @@ namespace Matinfo
 
         private void Button_Click_Modifier(object sender, RoutedEventArgs e)
         {
-            Materiel materielActuel = new Materiel(materiel.IdMateriel, int.Parse(tbCategorieMateriel.Text), tbCodeBarre.Text, tbNomMateriel.Text, tbRefConstructeur.Text);
+            Materiel materielActuel = new Materiel(materiel.IdMateriel, ((CategorieMateriel)cbCatMateriel.SelectedItem).IdCategorie, tbCodeBarre.Text, tbNomMateriel.Text, tbRefConstructeur.Text);
 
-            tbCategorieMateriel.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            cbCatMateriel.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
             tbNomMateriel.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             tbCodeBarre.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             tbRefConstructeur.GetBindingExpression(TextBox.TextProperty).UpdateSource();
