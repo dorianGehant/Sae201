@@ -9,13 +9,14 @@ using System.Windows;
 
 namespace Matinfo.Metier
 {
+    /// <summary>
+    /// Stocke 2 informations :
+    /// 1 chaine : le nom
+    /// 1 entier : l'id de la catégorie
+    /// </summary>
     public class CategorieMateriel : Crud<CategorieMateriel>
     {
-        /// <summary>
-        /// Stocke 2 informations :
-        /// 1 chaine : le nom
-        /// 1 entier : l'id de la catégorie
-        /// </summary>
+        
 
         private int idCategorie;
         private string nom;
@@ -31,12 +32,12 @@ namespace Matinfo.Metier
             this.IdCategorie = idCategorie;
             this.Nom = nom;
         }
-
+        /// <summary>
+        /// Obtient ou définit le nom de la categorie 
+        /// </summary>
         public string Nom
         {
-            /// <summary>
-            /// Obtient ou définit le nom de la categorie 
-            /// </summary>
+            
             get
             {
                 return this.nom;
@@ -47,12 +48,12 @@ namespace Matinfo.Metier
                 this.nom = value;
             }
         }
-
+        /// <summary>
+        /// Obtient ou définit l'id de la categorie 
+        /// </summary>
         public int IdCategorie
         {
-            /// <summary>
-            /// Obtient ou définit l'id de la categorie 
-            /// </summary>
+           
             get
             {
                 return this.idCategorie;
@@ -63,12 +64,12 @@ namespace Matinfo.Metier
                 this.idCategorie = value;
             }
         }
-
+        /// <summary>
+        /// Obtient la base de données des matériaux
+        /// </summary>
         public ObservableCollection<Materiel> LesMateriaux
         {
-            /// <summary>
-            /// Obtient la base de données des matériaux
-            /// </summary>
+            
             get
             {
                 return this.lesMateriaux;
@@ -80,12 +81,12 @@ namespace Matinfo.Metier
             }
         }
 
+        /// <summary>
+        ///Creation de la catégorie du matériel
+        /// </summary>
+        /// <returns>Un vrai si la création à bien marché ou un faux si cela n'a pas marché</returns>
         public bool Create()
         {
-            /// <summary>
-            ///Creation de la catégorie du matériel
-            /// </summary>
-            /// <returns>Un vrai si la création à bien marché ou un faux si cela n'a pas marché</returns>
        
          
             if (this.Read())
@@ -99,25 +100,25 @@ namespace Matinfo.Metier
             accessDB.SetData(requete);
             return true;
         }
-
+        /// <summary>
+        ///Suppréssion de la catégorie du matériel
+        /// </summary>
         public void Delete()
         {
 
-            /// <summary>
-            ///Suppréssion de la catégorie du matériel
-            /// </summary>
+          
 
             DataAccess accessDB = new DataAccess();
             string requete = "DELETE FROM categorie_materiel WHERE \"idcategorie\"=" + this.IdCategorie;
             accessDB.SetData(requete);
         }
-
+        /// <summary>
+        ///Cherche toutes les catégories de matériaux dans la base de données
+        /// </summary>
+        ///<returns>Toutes les catégories de matériaux</returns>
         public ObservableCollection<CategorieMateriel> FindAll()
         {
-            /// <summary>
-            ///Cherche toutes les catégories de matériaux dans la base de données
-            /// </summary>
-            ///<returns>Toutes les catégories de matériaux</returns>
+           
 
             ObservableCollection<CategorieMateriel> LesCategories = new ObservableCollection<CategorieMateriel>();
             DataAccess accesBD = new DataAccess();
@@ -134,12 +135,12 @@ namespace Matinfo.Metier
             return LesCategories;
         }
 
+        /// <summary>
+        ///Cherche la catégorie de matériel selectionné dans la base de données
+        /// </summary>
+        ///<returns>Toutes les catégories de matériaux< selectionnées</returns>
         public ObservableCollection<CategorieMateriel> FindBySelection(string criteres)
         {
-            /// <summary>
-            ///Cherche la catégorie de matériel selectionné dans la base de données
-            /// </summary>
-            ///<returns>Toutes les catégories de matériaux< selectionnées</returns>
             ObservableCollection<CategorieMateriel> LesCategories = new ObservableCollection<CategorieMateriel>();
             DataAccess accesBD = new DataAccess();
             String requete = "select idcategorie, nomcategorie, nompersonnel, prenompersonnel from categorie_materiel " + criteres;
@@ -154,13 +155,13 @@ namespace Matinfo.Metier
             }
             return LesCategories;
         }
-
+        /// <summary>
+        ///Cherche si il n'existe pas déjà une catégorie de matériel existante avec le nom de la catégorie
+        /// </summary>
+        ///<returns>Vrai s'il existe ou faux s'il n'existe pas</returns>
         public bool Read()
         {
-            /// <summary>
-            ///Cherche si il n'existe pas déjà une catégorie de matériel existante avec le nom de la catégorie
-            /// </summary>
-            ///<returns>Vrai s'il existe ou faux s'il n'existe pas</returns>
+            
             int ancienID = this.IdCategorie;
             DataAccess accesBD = new DataAccess();
             String requete = string.Format("select idcategorie from categorie_materiel where nomcategorie = '{0}'", this.Nom);
@@ -178,13 +179,13 @@ namespace Matinfo.Metier
             }
             return false;
         }
-
+        /// <summary>
+        ///Modifie une catégorie de matériel existante
+        /// </summary>
+        ///<returns>Vrai s'il y a bien eu modification ou faux si cela n'a pas été modifié</returns>
         public bool Update()
         {
-            /// <summary>
-            ///Modifie une catégorie de matériel existante
-            /// </summary>
-            ///<returns>Vrai s'il y a bien eu modification ou faux si cela n'a pas été modifié</returns>
+           
             int idCategorieModifie = this.IdCategorie;
             /// verification que les nouvelles valeurs respectent l'unicité
             if (this.Read())
