@@ -27,7 +27,8 @@ namespace Matinfo.Metier
 
         public Attribution()
         {
-
+            this.idPersonnel = 1;
+            this.IdMateriel = 17;
         }
 
         public Attribution(int idPersonnel, int idMateriel, string commentaire, DateTime dateAttribution)

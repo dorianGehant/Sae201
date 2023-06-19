@@ -27,7 +27,7 @@ namespace Matinfo.Metier
 
         public Materiel()
         {
-
+            this.IdCategorie = 1;
         }
 
         public Materiel(int idMateriel, int idCategorie, string codeBarre, string nom, string referenceConstructeur)
